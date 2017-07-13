@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>超帅的博客</title>
+  <title>zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端开发者">
+  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
 <meta property="og:type" content="website">
-<meta property="og:title" content="超帅的博客">
+<meta property="og:title" content="zhoujingchao.github.io">
 <meta property="og:url" content="//zhoujingchao.github.io/index.html">
-<meta property="og:site_name" content="超帅的博客">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端开发者">
+<meta property="og:site_name" content="zhoujingchao.github.io">
+<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="超帅的博客">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端开发者">
+<meta name="twitter:title" content="zhoujingchao.github.io">
+<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
   
-    <link rel="alternative" href="/atom.xml" title="超帅的博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -154,6 +154,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-移动端webApp踩坑之记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/移动端webApp踩坑之记/">移动端webApp踩坑之记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/06/移动端webApp踩坑之记/" class="archive-article-date">
+  	<time datetime="2017-07-06T15:32:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录一下最近移动端webApp项目开发中，遇到的一些坑。</p>
+<h2 id="一、WebView-性能优化"><a href="#一、WebView-性能优化" class="headerlink" title="一、WebView 性能优化"></a>一、WebView 性能优化</h2><h3 id="1-WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态："><a href="#1-WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态：" class="headerlink" title="1. WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态："></a>1. WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态：</h3><ul>
+<li>交互无反馈</li>
+<li>到达新的页面，页面白屏</li>
+<li>页面基本框架出现，但是没有数据；页面处于loading状态</li>
+<li>最后出现所需的数据</li>
+</ul>
+<h3 id="解决思路："><a href="#解决思路：" class="headerlink" title="解决思路："></a>解决思路：</h3><ul>
+<li>h5做的是单页面，所以h5首先做了按需加载，接着WebView也做了按需加载，这样就快很多了，时间大概在1-2s， </li>
+<li>刚启动的时候就补了个动画页弥补这1-2s的加载</li>
+<li>原生和h5都需要做本地缓存使页面和图片呈现的更快，再做数据请求更新</li>
+</ul>
+<h3 id="2-点击延迟"><a href="#2-点击延迟" class="headerlink" title="2. 点击延迟"></a>2. 点击延迟</h3><p>在WebView中，click通常会有大约300ms的延迟（包括链接的点击，表单的提交，控件的交互等任何用户点击行为）。</p>
+<h3 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h3><p>参考链接: <a href="https://github.com/ftlabs/fastclick" target="_blank" rel="external">fastclick</a></p>
+<h2 id="二、在ios中，输入状态时，h5定位属性fixed失效"><a href="#二、在ios中，输入状态时，h5定位属性fixed失效" class="headerlink" title="二、在ios中，输入状态时，h5定位属性fixed失效"></a>二、在ios中，输入状态时，h5定位属性fixed失效</h2><figure class="highlight html"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span>&gt;</span></div><div class="line">  <span class="comment">&lt;!-- fixed定位的头部 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">header</span> <span class="attr">class</span>=<span class="string">"header"</span>&gt;</span></div><div class="line">    我是头部</div><div class="line">  <span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="comment">&lt;!-- 可以滚动的区域 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">main</span> <span class="attr">class</span>=<span class="string">"main"</span>&gt;</span></div><div class="line">      <span class="comment">&lt;!-- 内容在这里... --&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">main</span>&gt;</span></div><div class="line">  </div><div class="line">  <span class="comment">&lt;!-- fixed定位的底部 --&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">footer</span> <span class="attr">class</span>=<span class="string">"footer"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"textarea needsclick"</span> </span></div><div class="line">      <span class="attr">contentEditable</span>=<span class="string">"true"</span> </div><div class="line">      <span class="attr">suppressContentEditableWarning</span>&gt;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">"handleClick()"</span>&gt;</span>发送<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<p>网上也查得到相关解决方案比如：<a href="http://efe.baidu.com/blog/mobile-fixed-layout/" target="_blank" rel="external">http://efe.baidu.com/blog/mobile-fixed-layout/</a><br>但是我也不知道为什么我按这个思路来，还是解决不了这个问题，有些人说可以解决，有些人说解决不了，就是这么的奇葩，或许是我姿势不对吧。=_=!!</p>
+<p>so，还是自己尝试摸索解决，我的布局header和footer是fixed，中间可滚动的区域是relative，算了不说了，直接上代码吧。<br><figure class="highlight javascript"><figcaption><span>```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// listenFocus和listenBlur是给可编辑div添加的聚焦和失焦的事件监听</span></div><div class="line">listenFocus = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (isiOS) &#123;</div><div class="line">    <span class="keyword">let</span> clientHeight = <span class="built_in">document</span>.querySelector(<span class="string">'.main'</span>).clientHeight</div><div class="line">    <span class="comment">// 高保真给的是2x的图，头部和底部的高度都是100px，所以中间的可视高度如下</span></div><div class="line">    <span class="keyword">let</span> availHeight = (clientHeight - <span class="number">200</span>) / <span class="number">2</span></div><div class="line">    <span class="comment">// 此定位解决方案，当内容达不到滚动时，输入框就会移动，所以判断下内容高度是否达到滚动条件</span></div><div class="line">    <span class="keyword">if</span> (availHeight &gt; <span class="built_in">window</span>.screen.availHeight) &#123;</div><div class="line">      <span class="comment">// 巨坑啊！fuck this！fixed属性失效，千辛万苦摸索定位解决</span></div><div class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'.footer'</span>).style.position = <span class="string">'relative'</span>     </div><div class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'.main'</span>).style.paddingBottom = <span class="string">'0'</span>     </div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 原生键盘弹起后, 操作时高度会不一样，使输入框始终不会被键盘遮挡</span></div><div class="line">    timerId = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">      <span class="built_in">document</span>.body.scrollTop = <span class="built_in">document</span>.body.scrollHeight</div><div class="line">    &#125;, <span class="number">100</span>)</div><div class="line">  &#125;</div><div class="line">&#125;  </div><div class="line">listenBlur = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (isiOS) &#123;</div><div class="line">    <span class="keyword">let</span> clientHeight = <span class="built_in">document</span>.querySelector(<span class="string">'.main'</span>).clientHeight</div><div class="line">    <span class="keyword">let</span> availHeight = (clientHeight - <span class="number">200</span>) / <span class="number">2</span></div><div class="line">    <span class="keyword">if</span> (availHeight &gt; <span class="built_in">window</span>.screen.availHeight) &#123;</div><div class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'.footer'</span>).style.position = <span class="string">'fixed'</span> </div><div class="line">      <span class="built_in">document</span>.querySelector(<span class="string">'.main'</span>).style.paddingBottom = <span class="string">'1rem'</span>     </div><div class="line">    &#125;</div><div class="line">    clearInterval(timerId)</div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/06/移动端webApp踩坑之记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -175,9 +242,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>在朋友的介绍下，这个博客很快就搭建起来了。</p>
-<p>当看见它加载下来的时候，内心很喜😊 悦，有了自己的一小块领地，这种感觉很奇妙，现在想想都还有点小刺激呢。</p>
+<p>当看见它加载下来的时候，内心还是很喜悦的，有了自己的一小块领地，这种感觉很奇妙，现在想想都还有点小刺激呢。对我这种语文是体育老师教的宝宝，想想要写作，我就不自觉的在偷笑，啊哈哈 =_=<br>好记性不如烂笔头，请打开学习旅程吧！</p>
 <p>当然这个色调和主题甚是喜欢啊，感谢litten大虾的神作。</p>
-<!-- Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+ <!--Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
 
 ## Quick Start
 
