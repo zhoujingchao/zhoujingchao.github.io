@@ -1530,6 +1530,7 @@ pre .css ~ * .id {
     visibility: hidden;
   } */ }
   .article img {
+    width: 100%;
     max-width: 100%; }
 
 .article-inner h1.article-title, .article-title {

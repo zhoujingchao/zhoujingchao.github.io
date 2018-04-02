@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Archives: 2018/1 | zhoujingchao.github.io</title>
+  <title>函数节流和防抖了解一下 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+  <meta name="description" content="问题引入问题1: 实现dom拖拽功能，但是绑定在拖拽事件的时候每当元素稍微移动一点便触发了大量的毁回调函数，导致浏览器卡死。问题2: 用户连续输入时需要AJAX请求问题。 像这种场景实在是太常见了，为了应对便出现了 函数节流 和 函数防抖 这两个概念，总的来说：这两个方法是在时间轴上控制函数的执行次数。">
 <meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/archives/2018/01/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="函数节流和防抖了解一下">
+<meta property="og:url" content="//zhoujingchao.github.io/2017/08/30/函数节流和防抖了解一下/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="问题引入问题1: 实现dom拖拽功能，但是绑定在拖拽事件的时候每当元素稍微移动一点便触发了大量的毁回调函数，导致浏览器卡死。问题2: 用户连续输入时需要AJAX请求问题。 像这种场景实在是太常见了，为了应对便出现了 函数节流 和 函数防抖 这两个概念，总的来说：这两个方法是在时间轴上控制函数的执行次数。">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/throttle.jpeg">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/debounce.jpeg">
+<meta property="og:updated_time" content="2018-04-02T08:56:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="函数节流和防抖了解一下">
+<meta name="twitter:description" content="问题引入问题1: 实现dom拖拽功能，但是绑定在拖拽事件的时候每当元素稍微移动一点便触发了大量的毁回调函数，导致浏览器卡死。问题2: 用户连续输入时需要AJAX请求问题。 像这种场景实在是太常见了，为了应对便出现了 函数节流 和 函数防抖 这两个概念，总的来说：这两个方法是在时间轴上控制函数的执行次数。">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/throttle.jpeg">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,49 +157,169 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-函数节流和防抖了解一下" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/24/一道经典的js面试题/" class="archive-article-date">
-  	<time datetime="2018-01-24T02:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/24/一道经典的js面试题/">一道经典的js面试题</a>
+    <h1 class="article-title" itemprop="name">
+      函数节流和防抖了解一下
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/2017/08/30/函数节流和防抖了解一下/" class="archive-article-date">
+  	<time datetime="2017-08-30T03:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p><strong>问题1:</strong> 实现dom拖拽功能，但是绑定在拖拽事件的时候每当元素稍微移动一点便触发了大量的毁回调函数，导致浏览器卡死。<br><strong>问题2:</strong> 用户连续输入时需要AJAX请求问题。</p>
+<p>像这种场景实在是太常见了，为了应对便出现了 <code>函数节流</code> 和 <code>函数防抖</code> 这两个概念，总的来说：<br>这两个方法是在<strong>时间轴上控制函数的执行次数</strong>。</p>
+<a id="more"></a>
+<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>对于函数节流（throttle）：</p>
+<ol>
+<li>游戏中的刷新率</li>
+<li>dom元素拖拽</li>
+<li>监听滚动事件判断是否到页面底部自动加载更多内容</li>
+</ol>
+<p>让一个函数不要执行得太频繁，减少一些过快的调用来节流，间隔时间段触发，有规律的执行。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>函数节流<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    body &#123;</span></span><br><span class="line"><span class="undefined">      height: 4000px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    var time = +new Date();</span></span><br><span class="line"><span class="undefined">    function count() &#123;</span></span><br><span class="line"><span class="undefined">      console.log("函数调用:" + (+new Date() - time));</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    // 节流 控制执行间隔时间 防止频繁触发 scroll resize mousemove</span></span><br><span class="line"><span class="undefined">    let throttle = (fn, delay) =&gt; &#123;</span></span><br><span class="line"><span class="undefined">      let context = this,</span></span><br><span class="line"><span class="undefined">        startTime = 0;</span></span><br><span class="line"><span class="undefined">      return function() &#123;</span></span><br><span class="line"><span class="undefined">        let curTime = new Date();</span></span><br><span class="line"><span class="undefined">        if (curTime - startTime &gt;= delay) &#123;</span></span><br><span class="line"><span class="undefined">          fn.apply(context, arguments);</span></span><br><span class="line"><span class="undefined">          startTime = curTime;</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">      &#125;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    window.onscroll = throttle(count, 1000);</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="/assets/throttle.jpeg" alt=""></p>
+<p>对于函数防抖（debounce）：</p>
+<ol>
+<li>防止表单多次提交</li>
+<li>防止输入框连续输入进行AJAX请求</li>
+<li>窗口缩放</li>
+</ol>
+<p>对于一定时间段的连续的函数调用，只让其执行一次，适合多次事件一次响应的情况。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>函数防抖<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    body &#123;</span></span><br><span class="line"><span class="undefined">      height: 4000px;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    window.onscroll = function () &#123;</span></span><br><span class="line"><span class="undefined">      console.log('scroll滑动');</span></span><br><span class="line"><span class="undefined">      debounce(count, 300);</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    function count() &#123;</span></span><br><span class="line"><span class="undefined">      console.log('函数调用');</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">    function debounce(fn, wait) &#123;</span></span><br><span class="line"><span class="undefined">      let context = this;</span></span><br><span class="line"><span class="undefined">      clearTimeout(fn.tId);</span></span><br><span class="line"><span class="undefined">      fn.tId = setTimeout(function () &#123;</span></span><br><span class="line"><span class="undefined">        fn.call(context)</span></span><br><span class="line"><span class="undefined">      &#125;, wait)</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">  </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>我们滚动页面时，频繁触发了多次的函数调用，如果函数调用中涉及到了dom操作或者接口请求的话，那就爆炸了。所以用防抖，让他停止滑动后，定时结束才执行函数处理逻辑。</p>
+<p><img src="/assets/debounce.jpeg" alt=""></p>
+<p>总之，巧用函数节流方式能够显著得提高页面性能以及交互体验。</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2017/08/30/函数节流和防抖了解一下/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/09/29/JS原型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS原型
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/07/06/移动端webApp踩坑之记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端webApp踩坑之记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -218,8 +342,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
