@@ -9,7 +9,7 @@
   <title>JS原型 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原型1、原型是什么？js是一门基于对象的脚本语言，但他没有类的概念。js中的对象是无序属性的集合，其属性可以包含基本值，对象或者函数，类似于键值对的集合。有了对象，按理说得有继承啊，不然对象之间没有任何联系了，也就真的沦为键值对的集合了。 我们知道，在js中可以使用构造函数来创建一个新对象，像下面这样： 123456// 构造函数无返回值function Person(name) &amp;#123;">
-<meta name="keywords" content="前端">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS原型">
 <meta property="og:url" content="//zhoujingchao.github.io/2017/09/29/JS原型/index.html">
@@ -20,7 +20,7 @@
 <meta property="og:image" content="//zhoujingchao.github.io/assets/constructor/2-1.jpeg">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/constructor/2-2.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/constructor/2-3.png">
-<meta property="og:updated_time" content="2018-03-14T07:40:47.000Z">
+<meta property="og:updated_time" content="2018-04-10T01:04:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS原型">
 <meta name="twitter:description" content="原型1、原型是什么？js是一门基于对象的脚本语言，但他没有类的概念。js中的对象是无序属性的集合，其属性可以包含基本值，对象或者函数，类似于键值对的集合。有了对象，按理说得有继承啊，不然对象之间没有任何联系了，也就真的沦为键值对的集合了。 我们知道，在js中可以使用构造函数来创建一个新对象，像下面这样： 123456// 构造函数无返回值function Person(name) &amp;#123;">
@@ -85,14 +85,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-		        
-					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-		        
-					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-		        
-					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-		        
 			</div>
 		</nav>
 	</header>
@@ -128,14 +120,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
-			        
-						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
-			        
-						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
-			        
-						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
-			        
 				</div>
 			</nav>
 
@@ -294,6 +278,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -414,7 +409,7 @@
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -2200,6 +2195,22 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
@@ -2249,7 +2260,7 @@
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">超帅，&lt;br&gt;毕业于成都大学&lt;br&gt;&lt;br&gt;热爱运动与美女，&lt;br&gt;目前是一枚前端&lt;br&gt;&lt;br&gt;If you believe in yourself，&lt;br&gt;anything is possible！&lt;br&gt;</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">超帅，&lt;br&gt;毕业于成都大学&lt;br&gt;热爱前端和运动&lt;br&gt;&lt;br&gt;If you believe in yourself，&lt;br&gt;anything is possible！&lt;br&gt;</div>
   	  	
     	</section>
     
