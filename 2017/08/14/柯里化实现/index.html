@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>数组扁平化 | zhoujingchao.github.io</title>
+  <title>柯里化实现 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="扁平化数组的扁平化，就是将一个嵌套多层的 array 转换为只有一层的 array 举个 🌰 ：有个 flatten 函数做扁平化 12var arr = [1, [2, [3, 4], 5]];console.log(flatten(arr)) // [1, 2, 3, 4, 5]">
+  <meta name="description" content="首先介绍下什么是函数柯里化。《Javascript忍者秘籍》中，对于函数柯里化的定义如下：  在一个函数中首先填充几个参数(然后再返回一个新函数)的技术称为柯里化(Currying)。  场景一实现一个加法函数： 1add(1)(2)(3,4)(5,6,7)() // 28 首先可以看到这个函数只有当参数为空时，才执行之前所有数值的加法，并且这样的嵌套可以无限进行。那么，返回值在参数不为空的时候必">
 <meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数组扁平化">
-<meta property="og:url" content="//zhoujingchao.github.io/2017/12/04/数组扁平化/index.html">
+<meta property="og:title" content="柯里化实现">
+<meta property="og:url" content="//zhoujingchao.github.io/2017/08/14/柯里化实现/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="扁平化数组的扁平化，就是将一个嵌套多层的 array 转换为只有一层的 array 举个 🌰 ：有个 flatten 函数做扁平化 12var arr = [1, [2, [3, 4], 5]];console.log(flatten(arr)) // [1, 2, 3, 4, 5]">
-<meta property="og:updated_time" content="2018-04-10T01:04:44.149Z">
+<meta property="og:description" content="首先介绍下什么是函数柯里化。《Javascript忍者秘籍》中，对于函数柯里化的定义如下：  在一个函数中首先填充几个参数(然后再返回一个新函数)的技术称为柯里化(Currying)。  场景一实现一个加法函数： 1add(1)(2)(3,4)(5,6,7)() // 28 首先可以看到这个函数只有当参数为空时，才执行之前所有数值的加法，并且这样的嵌套可以无限进行。那么，返回值在参数不为空的时候必">
+<meta property="og:updated_time" content="2018-04-16T08:29:43.827Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数组扁平化">
-<meta name="twitter:description" content="扁平化数组的扁平化，就是将一个嵌套多层的 array 转换为只有一层的 array 举个 🌰 ：有个 flatten 函数做扁平化 12var arr = [1, [2, [3, 4], 5]];console.log(flatten(arr)) // [1, 2, 3, 4, 5]">
+<meta name="twitter:title" content="柯里化实现">
+<meta name="twitter:description" content="首先介绍下什么是函数柯里化。《Javascript忍者秘籍》中，对于函数柯里化的定义如下：  在一个函数中首先填充几个参数(然后再返回一个新函数)的技术称为柯里化(Currying)。  场景一实现一个加法函数： 1add(1)(2)(3,4)(5,6,7)() // 28 首先可以看到这个函数只有当参数为空时，才执行之前所有数值的加法，并且这样的嵌套可以无限进行。那么，返回值在参数不为空的时候必">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -138,40 +138,52 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-数组扁平化" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-柯里化实现" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      数组扁平化
+      柯里化实现
     </h1>
   
 
         
-        <a href="/2017/12/04/数组扁平化/" class="archive-article-date">
-  	<time datetime="2017-12-04T07:18:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-12-04</time>
+        <a href="/2017/08/14/柯里化实现/" class="archive-article-date">
+  	<time datetime="2017-08-14T09:31:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-14</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="扁平化"><a href="#扁平化" class="headerlink" title="扁平化"></a>扁平化</h2><p><strong>数组的扁平化，就是将一个嵌套多层的 array 转换为只有一层的 array</strong></p>
-<p>举个 🌰 ：有个 flatten 函数做扁平化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(flatten(arr)) <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+        <p>首先介绍下什么是函数柯里化。《Javascript忍者秘籍》中，对于函数柯里化的定义如下：</p>
+<blockquote>
+<p>在一个函数中首先填充几个参数(然后再返回一个新函数)的技术称为柯里化(Currying)。</p>
+</blockquote>
+<h3 id="场景一"><a href="#场景一" class="headerlink" title="场景一"></a>场景一</h3><p>实现一个加法函数：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">add(<span class="number">1</span>)(<span class="number">2</span>)(<span class="number">3</span>,<span class="number">4</span>)(<span class="number">5</span>,<span class="number">6</span>,<span class="number">7</span>)() <span class="comment">// 28</span></span><br></pre></td></tr></table></figure>
+<p>首先可以看到这个函数只有当参数为空时，才执行之前所有数值的加法，并且这样的嵌套可以无限进行。那么，返回值在参数不为空的时候必定返回一个函数，该函数还保存了之前的参数，这就需要闭包。</p>
+<p>实现原理：</p>
 <a id="more"></a>
-<h3 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h3><p>我们最开始能想到的莫过于循环数组元素，如果还是数组，就递归调用该方法：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> result = [];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>, len = arr.length; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">Array</span>.isArray(arr[i])) &#123;</span><br><span class="line">      result = result.concat(flatten(arr[i]));</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      result.push(arr[i]);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h3><p>既然是对数组做处理，最终返回值，可以考虑用 reduce 来简化代码：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> prev.concat(<span class="built_in">Array</span>.isArray(curr) ? flatten(curr) : curr);</span><br><span class="line">  &#125;, [])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="ES6扩展运算符"><a href="#ES6扩展运算符" class="headerlink" title="ES6扩展运算符"></a>ES6扩展运算符</h3><p>用于取出参数对象的所有可遍历属性，拷贝到当前对象中</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"><span class="built_in">console</span>.log([].concat(...arr)); <span class="comment">// [1, 2, [3, 4], 5]</span></span><br></pre></td></tr></table></figure>
-<p>这种方法只可以扁平一层，所以要进行扩展</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">while</span> (arr.some(<span class="function">(<span class="params">item</span>) =&gt;</span> <span class="built_in">Array</span>.isArray(item))) &#123;</span><br><span class="line">    arr = [].concat(...arr);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flatten(arr)); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<h3 id="toString-NaN"><a href="#toString-NaN" class="headerlink" title="toString"></a>toString</h3><p>如果数组元素都是数字的话可以尝试：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]].toString() <span class="comment">// "1,2,3,4,5"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">flatten</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.toString().split(<span class="string">','</span>).map(<span class="function"><span class="params">item</span> =&gt;</span> +item);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flatten(arr)); <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>闭包保存args变量，存储之前的参数</li>
+<li>新建_add函数，无参数的时候执行算法，否则存储参数到args，然后返回函数自身</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 利用闭包，不断保存arguments</span></span><br><span class="line">  <span class="keyword">let</span> args = [].slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">let</span> _add = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 参数为空执行加法</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> args.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="comment">// 保存参数到args，返回一个函数</span></span><br><span class="line">      [].push.apply(args, <span class="built_in">arguments</span>);</span><br><span class="line">      <span class="keyword">return</span> _add</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> _add</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="场景二"><a href="#场景二" class="headerlink" title="场景二"></a>场景二</h3><p>Dom操作中的时间绑定</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> addEvent = <span class="function"><span class="keyword">function</span>(<span class="params">el, type, fn, capture</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    el.addEventListener(type, (e) =&gt; &#123;</span><br><span class="line">      fn,call(el, e);</span><br><span class="line">    &#125;, capture);</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    el.attachEvent(<span class="string">`on<span class="subst">$&#123;type&#125;</span>`</span>, (e) =&gt; &#123;</span><br><span class="line">      fn.call(el, e);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样的实现无可厚非，但是有个缺点，每次绑定都要进行一次 if-else 的操作，显然是没必要的，所以可以通过函数的柯里化改造下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> addEvent = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="built_in">window</span>.addEventListener) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, type, fn, capture</span>) </span>&#123;</span><br><span class="line">      el.addEventListener(type, (e) =&gt; &#123;</span><br><span class="line">        fn.call(el, e);</span><br><span class="line">      &#125;, capture);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="built_in">window</span>.attachEvent) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">el, type, fn, capture</span>) </span>&#123;</span><br><span class="line">      el.attachEvent(<span class="string">`on<span class="subst">$&#123;type&#125;</span>`</span>, (e) =&gt; &#123;</span><br><span class="line">        fn.call(el, e);</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+<h3 id="通用的函数来对普通函数进行柯里化"><a href="#通用的函数来对普通函数进行柯里化" class="headerlink" title="通用的函数来对普通函数进行柯里化"></a>通用的函数来对普通函数进行柯里化</h3><p>柯里化特点很明显需要一个闭包保存参数，一个函数来进行递归，这种模式是可以通过一个包装函数，对一些基本的函数进行包装之后具有curry的特性。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通用的函数柯里化构造方法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">curry</span>(<span class="params">func</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 第一个参数是要被柯里化的函数，需要拿掉</span></span><br><span class="line">  <span class="keyword">let</span> args = [].slice.call(<span class="built_in">arguments</span>, <span class="number">1</span>);</span><br><span class="line">  <span class="comment">// 新建_func函数作为返回</span></span><br><span class="line">  <span class="keyword">let</span> _func = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="built_in">arguments</span>.length === <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> func.apply(<span class="keyword">this</span>, args);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      [].push.apply(args, <span class="built_in">arguments</span>);</span><br><span class="line">      <span class="keyword">return</span> _func;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> _func;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">add</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> [].reduce.call(<span class="built_in">arguments</span>, (a, b) =&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">curry(add)(<span class="number">1</span>)(<span class="number">2</span>,<span class="number">3</span>)()</span><br></pre></td></tr></table></figure>
+<h3 id="柯里化的好处"><a href="#柯里化的好处" class="headerlink" title="柯里化的好处"></a>柯里化的好处</h3><ol>
+<li>延迟计算</li>
+<li>参数复用，当在多次调用同一个函数，并且传递的参数绝大多数是相同的，那么该函数可能是一个很好的柯里化选择</li>
+<li>动态创建函数</li>
+</ol>
+
       
 
       
@@ -261,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2017/12/04/数组扁平化/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2017/08/14/柯里化实现/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -275,18 +287,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2018/01/24/一道经典的js面试题/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/08/30/函数节流和防抖了解一下/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          一道经典的js面试题
+          函数节流和防抖了解一下
         
       </div>
     </a>
   
   
-    <a href="/2017/11/07/深入理解Promise/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">深入理解Promise</div>
+    <a href="/2017/07/06/移动端webApp踩坑之记/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">移动端webApp踩坑之记</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -2128,6 +2140,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">

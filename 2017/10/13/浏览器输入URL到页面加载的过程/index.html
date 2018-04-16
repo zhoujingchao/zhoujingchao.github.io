@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Archives: 2018/2 | zhoujingchao.github.io</title>
+  <title>浏览器输入URL到页面加载的过程 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/archives/2018/02/index.html">
+  <meta name="description" content="我们平常输入网址到页面展现这里面究竟发生了哪些事情？ 总体来说可以分为以下几个过程：  DNS域名解析 TCP连接 服务器处理请求 浏览器解析 绘制页面  具体过程DNS解析DNS解析过程就是寻找哪台机器上有你需要的资源的过程。当你在浏览器中输入一个地址时，例如 www.baidu.com， 其实不是百度网站真正意义上的地址。互联网上每一台计算机的唯一标识是它的IP地址，由于IP地址并不方便记忆，">
+<meta name="keywords" content="浏览器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器输入URL到页面加载的过程">
+<meta property="og:url" content="//zhoujingchao.github.io/2017/10/13/浏览器输入URL到页面加载的过程/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="我们平常输入网址到页面展现这里面究竟发生了哪些事情？ 总体来说可以分为以下几个过程：  DNS域名解析 TCP连接 服务器处理请求 浏览器解析 绘制页面  具体过程DNS解析DNS解析过程就是寻找哪台机器上有你需要的资源的过程。当你在浏览器中输入一个地址时，例如 www.baidu.com， 其实不是百度网站真正意义上的地址。互联网上每一台计算机的唯一标识是它的IP地址，由于IP地址并不方便记忆，">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/DNS域名解析过程.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/MVC处理过程.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/解析文档.gif">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/css解析.png">
+<meta property="og:updated_time" content="2018-04-16T08:31:35.444Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="浏览器输入URL到页面加载的过程">
+<meta name="twitter:description" content="我们平常输入网址到页面展现这里面究竟发生了哪些事情？ 总体来说可以分为以下几个过程：  DNS域名解析 TCP连接 服务器处理请求 浏览器解析 绘制页面  具体过程DNS解析DNS解析过程就是寻找哪台机器上有你需要的资源的过程。当你在浏览器中输入一个地址时，例如 www.baidu.com， 其实不是百度网站真正意义上的地址。互联网上每一台计算机的唯一标识是它的IP地址，由于IP地址并不方便记忆，">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/DNS域名解析过程.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -137,60 +143,202 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-浏览器输入URL到页面加载的过程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/02/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/" class="archive-article-date">
-  	<time datetime="2018-02-05T03:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-05</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/">vue+vuex+vue-router+express+mongoose编写简单的todolist-demo</a>
+    <h1 class="article-title" itemprop="name">
+      浏览器输入URL到页面加载的过程
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/13/浏览器输入URL到页面加载的过程/" class="archive-article-date">
+  	<time datetime="2017-10-13T02:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>我们平常输入网址到页面展现这里面究竟发生了哪些事情？</p>
+<p>总体来说可以分为以下几个过程：</p>
+<ol>
+<li>DNS域名解析</li>
+<li>TCP连接</li>
+<li>服务器处理请求</li>
+<li>浏览器解析</li>
+<li>绘制页面</li>
+</ol>
+<h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>DNS解析过程就是寻找哪台机器上有你需要的资源的过程。当你在浏览器中输入一个地址时，例如 <code>www.baidu.com</code>， 其实不是百度网站真正意义上的地址。互联网上每一台计算机的唯一标识是它的IP地址，由于IP地址并不方便记忆，用户更喜欢用方便记忆的网址去寻找互联网上的其他计算机，也就时上面提到的 <code>www.baidu.com</code>。所以互联网设计者需要在用户的方便性与可用性方面做一个权衡，这个权衡就是一个网址到IP地址的转换，此过程即是DNS解析。它实际上充当了一个翻译的角色，实现了网址到IP地址的转换。那么网址到IP地址转换的过程是如何进行的呢？</p>
+<a id="more"></a>
+<h4 id="解析过程"><a href="#解析过程" class="headerlink" title="解析过程"></a>解析过程</h4><p>DNS解析是一个递归查询的过程。</p>
+<p><img src="/assets/DNS域名解析过程.png" alt=""></p>
+<p>上述图片是查找<code>www.baidu.com</code>的IP地址过程。首先在本地域名服务器中查询IP地址，如果没有找到的情况下，本地域名服务器会向根域名服务器发送一个请求，如果根域名服务器也不存在该域名时，本地域名会向com顶级域名服务器发送一个请求，依次类推下去。直到最后本地域名服务器得到baidu的IP地址并把它缓存到本地，供下次查询使用。从上述过程中，可以看出网址的解析是一个从右向左的过程: com -&gt; baidu.com -&gt; <code>www.baidu.com</code>。但是你是否发现少了点什么，根域名服务器的解析过程呢？事实上，真正的网址是<code>www.baidu.com</code>.，并不是我多打了一个.，这个.对应的就是根域名服务器，默认情况下所有的网址的最后一位都是.，既然是默认情况下，为了方便用户，通常都会省略，浏览器在请求DNS的时候会自动加上，所有网址真正的解析过程为: . -&gt; .com -&gt; baidu.com. -&gt; <code>www.baidu.com</code>.。</p>
+<h4 id="DNS优化"><a href="#DNS优化" class="headerlink" title="DNS优化"></a>DNS优化</h4><p>了解了DNS的过程，可以为我们带来哪些？上文中请求到baidu的IP地址时，经历了8个步骤，这个过程中存在多个请求(同时存在UDP和TCP请求，为什么有两种请求方式，请自行查找)。如果每次都经过这么多步骤，是否太耗时间？如何减少该过程的步骤呢？那就是DNS缓存。</p>
+<h5 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h5><p>DNS存在着多级缓存，从离浏览器的距离排序的话，有以下几种: 浏览器缓存，系统缓存，路由器缓存，IPS服务器缓存，根域名服务器缓存，顶级域名服务器缓存，主域名服务器缓存。</p>
+<ol>
+<li>在你的chrome浏览器中输入:chrome://dns/，你可以看到chrome浏览器的DNS缓存。</li>
+<li>系统缓存主要存在/etc/hosts(Linux系统)中。</li>
+<li>…</li>
+</ol>
+<h5 id="DNS负载均衡"><a href="#DNS负载均衡" class="headerlink" title="DNS负载均衡"></a>DNS负载均衡</h5><p>不知道大家有没有思考过一个问题: DNS返回的IP地址是否每次都一样？如果每次都一样是否说明你请求的资源都位于同一台机器上面，那么这台机器需要多高的性能和储存才能满足亿万请求呢？其实真实的互联网世界背后存在成千上百台服务器，大型的网站甚至更多。但是在用户的眼中，它需要的只是处理他的请求，哪台机器处理请求并不重要。DNS可以返回一个合适的机器的IP给用户，例如可以根据每台机器的负载量，该机器离用户地理位置的距离等等，这种过程就是DNS负载均衡，又叫做DNS重定向。大家耳熟能详的CDN(Content Delivery Network)就是利用DNS的重定向技术，DNS服务器会返回一个跟用户最接近的点的IP地址给用户，CDN节点的服务器负责响应用户的请求，提供所需的内容。</p>
+<h3 id="TCP连接"><a href="#TCP连接" class="headerlink" title="TCP连接"></a>TCP连接</h3><p>TCP是互联网中的传输层协议，提供可靠的链接服务，采用三次握手确认一个连接：</p>
+<ol>
+<li>浏览器向服务器发送建立连接的请求。</li>
+<li>服务器接收到浏览器发送的请求后，像浏览器发送统一连接的信号。</li>
+<li>浏览器接受到服务器发出的同意连接的信号后，再次向服务器发出确认连接的信号。</li>
+</ol>
+<p>当三次握手返程，TCP客户端和服务端成功的建立连接，就可以开始传输数据了。</p>
+<h3 id="服务器处理请求"><a href="#服务器处理请求" class="headerlink" title="服务器处理请求"></a>服务器处理请求</h3><p>每台服务器上都会安装处理请求的应用——<code>Web server</code>。常见的<code>web server</code>产品有<code>apache</code>、<code>nginx</code>、<code>IIS</code>、<code>Lighttpd</code>等。</p>
+<p>当web server接收到一个HTTP请求(request)，会返回一个HTTP响应(response)，例如送回一个HTML页面。对于不同用户发送的请求，会结合配置文件，把不同请求委托给服务器上处理对应请求的程序进行处理（例如CGI脚本，JSP脚本，servlets，ASP脚本，服务器端JavaScript，或者一些其它的服务器端技术等）。</p>
+<p>无论它们(脚本)的目的如何，这些服务器端(server-side)的程序通常产生一个HTML的响应(response)来让浏览器可以浏览。</p>
+<p>那么如何处理请求？实际上就是后台处理的工作。后台开发现在有很多框架，但大部分都还是按照<a href="https://zh.wikipedia.org/wiki/MVC" target="_blank" rel="noopener">MVC设计模式</a>进行搭建的。</p>
+<p>处理过程如下图：</p>
+<p><img src="/assets/MVC处理过程.png" alt=""></p>
+<p>对于每一个用户输入的请求，首先被控制器接收，控制器决定用哪个模型来进行处理，然后模型用业务逻辑来处理用户的请求并返回数据，最后控制器确定用哪个视图模型，用相应的视图格式化模型返回html字符串给浏览器，并通过显示页面呈现给用户。</p>
+<h3 id="浏览器解析"><a href="#浏览器解析" class="headerlink" title="浏览器解析"></a>浏览器解析</h3><p>接下来就是浏览器进行处理，通过后台处理返回的HTML字符串被浏览器接受后被一句句读取解析，html页面经历加载、解析、渲染。</p>
+<h4 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h4><p>浏览器对一个html页面的加载顺序是从上而下的。如果加载过程中遇到外部css文件，浏览器另外发出一个请求，来获取css文件。遇到图片资源，浏览器也会另外发出一个请求，来获取图片资源。但是当文档加载过程中遇到js文件，html文档会挂起渲染（加载解析渲染同步）的线程，不仅要等待文档中js文件加载完毕，还要等待解析执行完毕，才可以恢复html文档的渲染线程。</p>
+<h4 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h4><p>解析文档是指将文档转化成为有意义的结构，也就是可让代码理解和使用的结构。解析得到的结果通常是代表了文档结构的节点树，它称作解析树或者语法树，也就是DOM树。如下图：</p>
+<p><img src="/assets/解析文档.gif" alt=""></p>
+<p>css解析是指将css文件解析为样式表对象。如下图：</p>
+<p><img src="/assets/css解析.png" alt=""></p>
+<p>js解析是文件在加载的同时也进行解析<br>如果想深入如何解析的话可以看<a href="https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/#Parsing_general" target="_blank" rel="noopener">浏览器的工作原理：新式网络浏览器幕后揭秘</a>这篇文章</p>
+<h4 id="渲染"><a href="#渲染" class="headerlink" title="渲染"></a>渲染</h4><p>即为构建渲染树的过程，就是将DOM树进行可视化表示。构建这棵树是为了以正确的顺序绘制文档内容。</p>
+<h3 id="绘制页面"><a href="#绘制页面" class="headerlink" title="绘制页面"></a>绘制页面</h3><p>浏览器根据 HTML 和 CSS 计算得到渲染树，最终绘制到屏幕上</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">浏览器</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2017/10/13/浏览器输入URL到页面加载的过程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/11/07/深入理解Promise/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          深入理解Promise
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/09/29/JS原型/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS原型</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -213,8 +361,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
@@ -2017,6 +2165,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">

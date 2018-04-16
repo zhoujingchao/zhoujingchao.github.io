@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Archives: 2017/11 | zhoujingchao.github.io</title>
+  <title>一道经典的js面试题 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/archives/2017/11/index.html">
+  <meta name="description" content="废话不多说，直切主题 1234567for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function() &amp;#123;    console.log(new Date, i);  &amp;#125;, 1000);&amp;#125;console.log(new Date, i); 输出？">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一道经典的js面试题">
+<meta property="og:url" content="//zhoujingchao.github.io/2017/03/24/一道经典的js面试题/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="废话不多说，直切主题 1234567for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function() &amp;#123;    console.log(new Date, i);  &amp;#125;, 1000);&amp;#125;console.log(new Date, i); 输出？">
+<meta property="og:updated_time" content="2018-04-16T08:27:48.544Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="一道经典的js面试题">
+<meta name="twitter:description" content="废话不多说，直切主题 1234567for (var i = 0; i &amp;lt; 5; i++) &amp;#123;  setTimeout(function() &amp;#123;    console.log(new Date, i);  &amp;#125;, 1000);&amp;#125;console.log(new Date, i); 输出？">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -137,36 +138,70 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-一道经典的js面试题" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/11/07/深入理解Promise/" class="archive-article-date">
-  	<time datetime="2017-11-07T05:32:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-11-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/11/07/深入理解Promise/">深入理解Promise</a>
+    <h1 class="article-title" itemprop="name">
+      一道经典的js面试题
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/03/24/一道经典的js面试题/" class="archive-article-date">
+  	<time datetime="2017-03-24T02:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>废话不多说，直切主题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>输出？<br><a id="more"></a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">53</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">54</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">54</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">54</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">54</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br><span class="line">Wed Jan <span class="number">24</span> <span class="number">2018</span> <span class="number">10</span>:<span class="number">13</span>:<span class="number">54</span> GMT+<span class="number">0800</span> (CST) <span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>循环执行过程中，几乎同时设置了5个定时器，这些定时器一般情况下都会在1秒之后触发，而循环完的输出是立即执行的。所以先输出了5，1秒之后输出5个5。<br>这里考查了js异步代码，变量作用域，定时器工作机制的理解。</p>
+<p>如果期望代码输出：5 -&gt; 0,1,2,3,4，该怎么改造？熟悉闭包的同学很快能给出下面的解决方案：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>) </span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, j);</span><br><span class="line">    &#125;, <span class="number">1000</span>);</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>这里利用了立即执行函数的表达式来解决闭包，当然还可以利用js中基本类型的参数是<code>按值传递</code>的特征来改造：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> output = <span class="function"><span class="keyword">function</span> (<span class="params">i</span>) </span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  output(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>接着还可以衍生出ES6的考察：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br></pre></td></tr></table></figure>
+<p>这里只有个非常细微的变动，即使用 ES6 <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/let" target="_blank" rel="noopener">块级作用域</a> 中的 <code>let</code> 替代了 <code>var</code>，但是代码在实际运行时第二段 <code>console.log(new Date, i)</code> 会报错，因为最后那个输出使用的 <code>i</code> 在其所在的作用域中并不存在，<code>i</code> 只存在于循环内部。</p>
+<p>下面再进行扩展要求循环和两处 <code>console</code> 不变，要求代码执行时立即输出0，之后每隔1秒依次输出1，2，3，4，循环结束后，大概在第5秒输出5</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> tasks = [];</span><br><span class="line"><span class="comment">// let output = (i) =&gt; new Promise(resolve =&gt; &#123;</span></span><br><span class="line"><span class="comment">//   setTimeout(() =&gt; &#123;</span></span><br><span class="line"><span class="comment">//     console.log(new Date, i);</span></span><br><span class="line"><span class="comment">//     resolve();</span></span><br><span class="line"><span class="comment">//   &#125;, 1000 * i);</span></span><br><span class="line"><span class="comment">// &#125;)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">  <span class="comment">// tasks.push(output(i));</span></span><br><span class="line">  (<span class="function">(<span class="params">j</span>) =&gt;</span> &#123;</span><br><span class="line">    tasks.push(<span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, j);</span><br><span class="line">        resolve();</span><br><span class="line">      &#125;, <span class="number">1000</span> * j);</span><br><span class="line">    &#125;));</span><br><span class="line">  &#125;)(i);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.all(tasks).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">  &#125;, <span class="number">1000</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>既然到 <code>Promise</code> 了，那我们是不是应该用下 <code>ES7</code> 中的 <code>async await</code> 特性来实现一下下呢。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> asyncFn = <span class="function">(<span class="params">time</span>) =&gt;</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve</span>) =&gt;</span> &#123;</span><br><span class="line">  setTimeout(resolve, time);</span><br><span class="line">&#125;); <span class="comment">// 这个分号必须写，不然下面的立即表达式会融合到setTimeout函数中，如果使用大括号return new promise使之闭合，就不会有这个问题了</span></span><br><span class="line"></span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">await</span> asyncFn(<span class="number">1000</span>);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">await</span> asyncFn(<span class="number">1000</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">new</span> <span class="built_in">Date</span>, i);</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -178,19 +213,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2017/03/24/一道经典的js面试题/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/06/移动端webApp踩坑之记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          移动端webApp踩坑之记
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/03/13/JS基本面试题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS基本面试题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -213,8 +326,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
