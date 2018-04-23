@@ -659,53 +659,9 @@
 </blockquote>
 <p>前者说明，loading是必要的。人处于“开始转移注意力”时，loading就开始挽留你躁动的心。但web工程师的一个使命，就是通过提升性能，不让用户看到loading。loading要有，但不能常有。</p>
 <p>后者说明，资源的加载和渲染可以大做文章。因为一个html文件，几乎是所有资源的承载器，哪些优先加载，怎样加载，都是前端工程师可以控制的。</p>
-<h3 id="再议提高页面性能的方法有哪些"><a href="#再议提高页面性能的方法有哪些" class="headerlink" title="再议提高页面性能的方法有哪些"></a>再议提高页面性能的方法有哪些</h3><p>大致可归类为以下几类：</p>
-<ol>
-<li>资源压缩合并，减少HTTP请求</li>
-<li>异步加载</li>
-<li>利用浏览器缓存</li>
-<li>使用CDN</li>
-<li>预解析DNS</li>
-</ol>
-<h4 id="资源压缩合并，减少HTTP请求"><a href="#资源压缩合并，减少HTTP请求" class="headerlink" title="资源压缩合并，减少HTTP请求"></a>资源压缩合并，减少HTTP请求</h4><p>顾名思义即是变小资源，减少请求</p>
-<h4 id="异步加载"><a href="#异步加载" class="headerlink" title="异步加载"></a>异步加载</h4><p>1）动态脚本加载<br>2）defer，在HTMl解析完之后才会执行，如果多个，按照加载顺序依次执行<br>3）async，在加完之后立即执行，如果是多个，执行顺序和加载顺序无关</p>
-<h4 id="浏览器缓存"><a href="#浏览器缓存" class="headerlink" title="浏览器缓存"></a>浏览器缓存</h4><p>浏览器缓存(Brower Caching)是浏览器在本地磁盘对用户最近请求过的文档进行存储，当访问者再次访问同一页面时，浏览器就可以直接从本地磁盘加载文档。<br>这个点是提升性能最重要的一点了，如果缺失这个，前面的资源压缩合并都起不到没什么作用了。</p>
-<p>它又是如何判断是否使用缓存的呢？见下图：</p>
-<p><img src="/assets/浏览器缓存.png" alt=""></p>
-<p>优点有：</p>
-<ol>
-<li>减少了冗余的数据传输，节省了网费</li>
-<li>减少了服务器的负担，大大提升了网站的性能</li>
-<li>加快了客户端加载网页的速度</li>
-</ol>
-<p>缓存的分类：</p>
-<ol>
-<li>强缓存：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的network选项中可以看到该请求返回200的状态码;</li>
-<li>协商缓存：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；</li>
-</ol>
-<p>两者的共同点是，都是从客户端缓存中读取资源；区别是强缓存不会发请求，协商缓存会发请求。</p>
-<p>都是通过http response header中的参数来设置的</p>
-<p>强制缓存<br><code>Expires</code>：过期时间，浏览器再次加载资源时，如果在这个过期时间内，则命中强缓存。<br><code>Cache-Control</code>：当值设为<code>max-age=300</code>时，则代表在这个请求正确返回时间（浏览器也会记录下来）的5分钟内再次加载资源，就会命中强缓存。<br><code>cache-control</code>除了该字段外，还有下面几个比较常用的设置值：<br><code>-no-cache</code>：不使用本地缓存。需要使用缓存协商，先与服务器确认返回的响应是否被更改，如果之前的响应中存在ETag，那么请求的时候会与服务端验证，如果资源未被更改，则可以避免重新下载。<br><code>-no-store</code>：直接禁止浏览器缓存数据，每次用户请求该资源，都会向服务器发送一个请求，每次都会下载完整的资源。<br><code>-public</code>：可以被所有的用户缓存，包括终端用户和CDN等中间代理服务器。<br><code>-private</code>：只能被终端用户的浏览器缓存，不允许CDN等中继缓存服务器对其缓存。</p>
-<p>协商缓存<br><code>Last-Modify/If-Modify-Since</code>：浏览器第一次请求一个资源的时候，服务器返回的header中会加上<code>Last-Modify</code>，<code>Last-modify</code>是一个时间标识该资源的最后修改时间；当浏览器再次请求该资源时，request的请求头中会包含<code>If-Modify-Since</code>，该值为缓存之前返回的<code>Last-Modify</code>。服务器收到<code>If-Modify-Since</code>后，根据资源的最后修改时间判断是否命中缓存<br><code>Etag</code>：web服务器响应请求时，告诉浏览器当前资源在服务器的唯一标识（生成规则由服务器决定）。<br><code>If-None-Match</code>：当资源过期时（使用<code>Cache-Control</code>标识的<code>max-age</code>），发现资源具有Etag声明，则再次向web服务器请求时带上头<code>If-None-Match</code>（<code>Etag</code>的值）。web服务器收到请求后发现有头<code>If-None-Match</code>则与被请求资源的相应校验串进行比对，决定是否命中协商缓存。</p>
-<h4 id="cdn加速"><a href="#cdn加速" class="headerlink" title="cdn加速"></a>cdn加速</h4><p>维基百科给出的解释是：</p>
-<blockquote>
-<p>内容分发网络（Content delivery network或Content distribution network，缩写：CDN）。简单来说它主要的工作是把我们需要被分发的内容分发到世界各地的各个节点上，让世界各地的人都可以在距离最近的网络节点拿到想要拿到的内容，减少网络传输距离从而达到加速的目的。</p>
-</blockquote>
-<p>前端需要被加速的文件大致包括 js、css、图片、视频、和页面等文件，先聊聊js、css、图片和视频文件。这些文件和页面（html\jsp\aspx等）最大的区别是：这些文件都是静态的，改动较小，这类静态文件最适合做cdn加速。我们把这些静态文件通过cdn分发到全国乃至世界的各个节点，用户就可以在距离最近的边缘节点拿到所需要的内容，从而提升内容下载速度加快网页打开速度达到性能优化的目的。接下来我们聊聊页面，页面分动态页面(如：jsp等)和静态页面（html）</p>
-<blockquote>
-<p>动态页面：当收到用户请求时服务器会在服务端对页面进行一次后台渲染把数据渲染到页面之后再返回给用户（当然，服务端也可以做缓存）。<br>静态页面：收到用户请求时，服务端不做渲染工作直接返回给用户。</p>
-</blockquote>
-<p>动态页面是不适合做cdn加速的。原因：由于页面是动态的，内容的有效期就比较活跃。假如我们对动态页面做了cdn加速，那么场景应该是这样的：用户——&gt;边缘节点（验证有效期发现失效）——&gt;源站。经过这个过程才能拿到页面，这样并没有起到加速的作用反而更慢了，那我们还不如直接去源站拿。</p>
-<h4 id="预解析DNS"><a href="#预解析DNS" class="headerlink" title="预解析DNS"></a>预解析DNS</h4><p>DNS解析时间可能导致大量用户感知延迟，DNS解析所需的时间差异非常大，延迟范围可以从1ms（本地缓存结果）到普遍的几秒钟时间。所以利用DNS预解析是有意义的。</p>
-<p>浏览器对网站第一次的域名DNS解析查找流程依次为：<br><strong>浏览器缓存-系统缓存-路由器缓存-ISP DNS缓存-递归搜索</strong></p>
-<p><img src="/assets/DNS预解析.jpg" alt=""></p>
-<p>实现方式：</p>
-<ol>
-<li>用meta信息来告知浏览器, 当前页面要做DNS预解析: <code>&lt;meta http-equiv=&quot;x-dns-prefetch-control&quot; content=&quot;on&quot; /&gt;</code></li>
-<li>在页面header中使用link标签来强制对DNS预解析: <code>&lt;link rel=&quot;dns-prefetch&quot; href=&quot;http://bdimg.share.baidu.com&quot; /&gt;</code></li>
-</ol>
-<p><strong>注：dns-prefetch需慎用，多页面重复DNS预解析会增加重复DNS查询次数。</strong></p>
-
+        
+          <a class="article-more-a" href="/2017/07/23/如何提高页面性能/#more">more >></a>
+        
       
 
       
@@ -2724,15 +2680,15 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">js</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">css</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
               </li>
              
               <li class="article-tag-list-item">
