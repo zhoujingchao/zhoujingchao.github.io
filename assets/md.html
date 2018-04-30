@@ -6,18 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Archives: 2018 | zhoujingchao.github.io</title>
+  <title>zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+  <meta name="description" content="前言 这是一个最简单的组件： 1234567891011121314import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class A extends Component &amp;#123;  constructor(props) &amp;#123;    super(props)    this.state = &amp;#123;&amp;#125;  &amp;#125;  re">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="website">
 <meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/archives/2018/index.html">
+<meta property="og:url" content="//zhoujingchao.github.io/assets/md.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="前言 这是一个最简单的组件： 1234567891011121314import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class A extends Component &amp;#123;  constructor(props) &amp;#123;    super(props)    this.state = &amp;#123;&amp;#125;  &amp;#125;  re">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/组件A.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/组件A-1.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/组件A-2.png">
+<meta property="og:updated_time" content="2018-04-30T02:18:22.917Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:description" content="前言 这是一个最简单的组件： 1234567891011121314import React, &amp;#123; Component &amp;#125; from &apos;react&apos;class A extends Component &amp;#123;  constructor(props) &amp;#123;    super(props)    this.state = &amp;#123;&amp;#125;  &amp;#125;  re">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/组件A.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,98 +158,139 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><!-- 15.2.1 -->
+<p>这是一个最简单的组件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(props) &#123;</span><br><span class="line">    <span class="keyword">super</span>(props)</span><br><span class="line">    <span class="keyword">this</span>.state = &#123;&#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>This is Component A<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> A</span><br></pre></td></tr></table></figure>
+<p>这时候我们就可以渲染 <code>&lt;A /&gt;</code> 组件了，那么我们就先弄清楚 <code>&lt;A /&gt;</code> 是什么，<code>console.log(&lt;A /&gt;)</code> 打印出来：</p>
+<!-- ![](/assets/组件A.png) -->
+<p><img src="组件A.png" alt=""></p>
+<p>可以看出 <code>&lt;A /&gt;</code> 是js对象而不是真实的DOM，注意此时的 <code>props</code> 是空对象。接下来我们打印 <code>&lt;A&gt;&lt;div&gt;This is Component A&lt;/div&gt;&lt;/A&gt;</code>，这时控制台输出：</p>
+<!-- ![](/assets/组件A-1.png) -->
+<p><img src="组件A-1.png" alt=""></p>
+<p>我们看到，props发生了变化，由于 <code>&lt;A /&gt;</code>组件中嵌套了一个 <code>div</code>，<code>div</code> 中又嵌套了文字，所以在描述 <code>&lt;A /&gt;</code> 对象的 <code>props</code> 中增加了 <code>children</code> 属性，其值为描述 <code>div</code> 的js对象。同理，如果我们进行多层的组件嵌套，其实就是在父对象的 <code>props</code> 中增加 <code>children</code> 字段及对应的描述值，也就是js对象的多层嵌套</p>
+<p>我们在 <code>import React, { Component } from &#39;react&#39;</code> 时，引入的就是源码中提供的React对象，所以在这里我们先打开 <code>React.js</code>，可以看到如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> React = &#123;</span><br><span class="line">  Component: ReactComponent,</span><br><span class="line">  createElement: createElement,</span><br><span class="line">  PropTypes: ReactPropTypes,</span><br><span class="line">  createClass: ReactClass.createClass</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = React;</span><br></pre></td></tr></table></figure>
+<p>在 <code>class A extends Component</code> 时，继承了 <code>Component</code> 类。<br>沿着 <code>ReactComponent</code> 的线索，我们打开 <code>ReactComponent.js</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReactComponent</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactComponent.prototype.setState = <span class="function"><span class="keyword">function</span> (<span class="params">partialState, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">ReactComponent.prototype.forceUpdate = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = ReactComponent;</span><br></pre></td></tr></table></figure>
+<p>这里的代码，大家应该比较熟悉了，也看到了 <code>SetState</code> 是定义在原型上具有两个参数的方法，具体原理后续再讲。<br>我们在最开始声明的组件A，其实是继承 <code>ReactComponent</code> 类的子类，它的原型具有 <code>setState</code> 等方法。这样组件A已经有了最基本的雏形。</p>
+<!-- ![](/assets/组件A-2.png) -->
+<p><img src="组件A-2.png" alt=""></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/04/23/前端安全CSRF&&XSS/" class="archive-article-date">
-  	<time datetime="2018-04-23T09:04:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/04/23/前端安全CSRF&&XSS/">前端安全CSRF &amp;&amp; XSS</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">安全</a>
-        		</li>
-      		
-		</ul>
-	</div>
+      
 
-          
-
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/assets/md.html" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/" class="archive-article-date">
-  	<time datetime="2018-01-05T03:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/">vue+vuex+vue-router+express+mongoose编写简单的todolist-demo</a>
-    </h1>
+
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+
+
   
-  
-    </div></section>
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -268,7 +314,7 @@
 		mathjax: false,
 		isHome: false,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
