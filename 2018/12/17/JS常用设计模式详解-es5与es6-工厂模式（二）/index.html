@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Tag: 移动端 | zhoujingchao.github.io</title>
+  <title>JS常用设计模式详解[es5与es6]-工厂模式（二） | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+  <meta name="description" content="什么是工厂模式？工厂模式是用来创建对象的一种最常用的设计模式，我们不暴露创建对象的具体逻辑，而是提供一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类，而子类可以重写接口方法以便创建的时候指定自己的对象类型。所以这个创建对象的接口函数就可以视为一个工厂。工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。 下面，我们先以一个场景去简单的理解下">
 <meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/tags/移动端/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS常用设计模式详解[es5与es6]-工厂模式（二）">
+<meta property="og:url" content="//zhoujingchao.github.io/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="什么是工厂模式？工厂模式是用来创建对象的一种最常用的设计模式，我们不暴露创建对象的具体逻辑，而是提供一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类，而子类可以重写接口方法以便创建的时候指定自己的对象类型。所以这个创建对象的接口函数就可以视为一个工厂。工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。 下面，我们先以一个场景去简单的理解下">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/cat.jpg">
+<meta property="og:updated_time" content="2018-12-19T08:07:59.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="JS常用设计模式详解[es5与es6]-工厂模式（二）">
+<meta name="twitter:description" content="什么是工厂模式？工厂模式是用来创建对象的一种最常用的设计模式，我们不暴露创建对象的具体逻辑，而是提供一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类，而子类可以重写接口方法以便创建的时候指定自己的对象类型。所以这个创建对象的接口函数就可以视为一个工厂。工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。 下面，我们先以一个场景去简单的理解下">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/cat.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,60 +156,210 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JS常用设计模式详解-es5与es6-工厂模式（二）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/07/06/移动端webApp踩坑之记/" class="archive-article-date">
-  	<time datetime="2017-07-06T15:32:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/07/06/移动端webApp踩坑之记/">移动端webApp踩坑之记</a>
+    <h1 class="article-title" itemprop="name">
+      JS常用设计模式详解[es5与es6]-工厂模式（二）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        <a href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/" class="archive-article-date">
+  	<time datetime="2018-12-17T08:27:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><p>工厂模式是用来创建对象的一种最常用的设计模式，我们不暴露创建对象的具体逻辑，而是提供一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类，而子类可以重写接口方法以便创建的时候指定自己的对象类型。所以这个创建对象的接口函数就可以视为一个工厂。工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。</p>
+<p>下面，我们先以一个场景去简单的理解下抽象和工厂的概念</p>
+<blockquote>
+<p>想象一下你的女朋友生日要到了，你想知道她想要什么礼物，于是你问他：“亲爱哒，生日要到了呢，你想要什么生日礼物咩？”</p>
+</blockquote>
+<blockquote>
+<p>于是她回答你说：“亲爱的，我想要一只动物。”</p>
+</blockquote>
+<blockquote>
+<p>你心平气和（黑人问号？？？）的问她：“想要什么动物啊？”</p>
+</blockquote>
+<blockquote>
+<p>你女友说：“我想要猫科动物。”</p>
+</blockquote>
+<blockquote>
+<p>这时你内心就纳闷了，猫科动物有老虎，狮子，豹子，还有各种小猫，我哪里知道你要什么？</p>
+</blockquote>
+<blockquote>
+<p>于是你接着问女友：“你要哪种猫科动物啊？”</p>
+</blockquote>
+<blockquote>
+<p>“笨死了，还要哪种，肯定是小猫咪啊，难道我们家还能像迪拜土豪那样养老虎啊！”你女朋友答道。</p>
+</blockquote>
+<blockquote>
+<p>“好好， 那你想要哪个品种的猫呢？”你问道。</p>
+</blockquote>
+<blockquote>
+<p>“我想要国外的品种, 不要中国的土猫” 你女友傲娇的回答到。</p>
+</blockquote>
+<blockquote>
+<p>这时你已经快奔溃了，作为程序员的你再也受不了这种挤牙膏式的提问，于是你哀求到：“亲爱的，你就直接告诉我你到底想要哪个品种，哪个颜色，多大的猫？”</p>
+</blockquote>
+<blockquote>
+<p>你女友想了想抖音的那只猫，回答道：“我想要一只银色的，不超过1岁的英短折耳猫！”</p>
+</blockquote>
+<blockquote>
+<p>于是，你在女友生日当天到文二路花鸟市场里面去，挑了一只“银色的，不超过1岁的英短折耳猫”回家送给了你女友, 圆了你女友拥有网红同款猫的梦!<br>  <img src="/assets/cat.jpg" style="width:50%;height:50%;"></p>
+</blockquote>
+<a id="more"></a>
+<p>上面你最终买到并送给女友<strong>那只猫</strong>可以被看作是一个<strong>实例对象</strong>，<strong>花鸟市场</strong>可以看作是一个工厂，我们可以认为它是一个函数，这个工厂函数里面有着各种各样的动物，那么你是如何获取到实例的呢？因为你给花鸟市场传递了正确的参数, <strong>“color: 银色”，“age: 不超过1岁”，”breed:英短折耳”，“category: 猫”</strong>。前面的对话中, 你女朋友回答<code>动物</code>，<code>猫科动物</code>，<code>国外的品种</code>让你不明白她到底想要什么，就是因为她说得太抽象了。她回答的是一大类动物的共有特征而不是具体动物，这种将复杂事物的一个或多个共有特征抽取出来的思维过程就是<strong>抽象</strong>。</p>
+<p>既然已经明白了抽象的概念，下面我们来看一下之前提到的工厂模式的三种实现方法： 简单工厂模式、工厂方法模式、抽象工厂模式。</p>
+<h3 id="简单工厂模式"><a href="#简单工厂模式" class="headerlink" title="简单工厂模式"></a>简单工厂模式</h3><p>简单工厂模式又叫静态工厂模式，由一个工厂对象决定创建某一种产品对象类的实例。主要用来创建同一类对象。</p>
+<p>就以上面的对话例子做个扩展，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> petMarketFactory = <span class="function"><span class="keyword">function</span>(<span class="params">pet</span>) </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">Pet</span>(<span class="params">opt</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = opt.name</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span>(pet) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'cat'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Pet(&#123; <span class="attr">name</span>: <span class="string">'cat'</span>&#125;)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'fish'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Pet(&#123; <span class="attr">name</span>: <span class="string">'fish'</span>&#125;)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'dog'</span>:</span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">new</span> Pet(&#123; <span class="attr">name</span>: <span class="string">'dog'</span>&#125;)</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'参数错误, 可选参数:cat, fish, dog'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat = petMarketFactory(<span class="string">'cat'</span>)</span><br><span class="line"><span class="keyword">var</span> fish = petMarketFactory(<span class="string">'fish'</span>)</span><br><span class="line"><span class="keyword">var</span> dog = petMarketFactory(<span class="string">'dog'</span>)</span><br></pre></td></tr></table></figure>
+<p>它的优点在于你只需要一个正确参数，就可以获得你所需要的对象，而无需知道对象创建的具体逻辑。但是在函数内包含了所有对象的创建逻辑（Pet构造函数）和判断逻辑的代码，每增加新的构造函数还需要修改判断逻辑代码。当我们的对象不是上面的3个而是更多时，这个函数会成为一个庞大的超级函数，便得难以维护。所以，简单工厂只能作用于创建的对象数量较少，对象的创建逻辑不复杂时使用。</p>
+<h3 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h3><p>工厂方法模式可以看作是一个实例化对象的工厂类，代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安全模式创建的工厂方法函数</span></span><br><span class="line"><span class="keyword">var</span> petMarketFactory = <span class="function"><span class="keyword">function</span>(<span class="params">name, pet</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> <span class="keyword">instanceof</span> petMarketFactory) &#123;</span><br><span class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="keyword">this</span>[name](pet)</span><br><span class="line">    <span class="keyword">return</span> o</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> petMarketFactory(name, pet)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 工厂方法函数的原型中设置所有对象的构造函数</span></span><br><span class="line">petMarketFactory.prototype = &#123;</span><br><span class="line">  Cat: <span class="function"><span class="keyword">function</span>(<span class="params">pet</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"cat"</span></span><br><span class="line">    <span class="keyword">this</span>.type = pet</span><br><span class="line">  &#125;,</span><br><span class="line">  Fish: <span class="function"><span class="keyword">function</span>(<span class="params">pet</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">"fish"</span></span><br><span class="line">    <span class="keyword">this</span>.type = pet</span><br><span class="line">  &#125;,</span><br><span class="line">  Dog: <span class="function"><span class="keyword">function</span>(<span class="params">pet</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = <span class="string">'dog'</span></span><br><span class="line">    <span class="keyword">this</span>.type = pet</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> cat = petMarketFactory(<span class="string">'Cat'</span>, <span class="string">'animal'</span>)</span><br><span class="line"><span class="keyword">var</span> fish = petMarketFactory(<span class="string">'Fish'</span>, <span class="string">'animal'</span>)</span><br><span class="line"><span class="keyword">var</span> dog = petMarketFactory(<span class="string">'Dog'</span>, <span class="string">'animal'</span>)</span><br></pre></td></tr></table></figure>
+<p>使用上面的模式去进行实例化，就不用担心某个阶段遗忘使用 new 操作导致对象取不到的问题了。</p>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>上面介绍了简单工厂模式和工厂方法模式都是直接生成实例，但是抽象工厂模式不同，抽象工厂模式并不直接生成实例， 而是用于对产品类簇的创建。</p>
+<p>上面例子中的cat，fish，dog三种宠物，其中 cat 商家提供了不同的品种，例如：英短，美短。那么这两个种类就是对应的类簇。在抽象工厂中，类簇一般用父类定义，并在父类中定义一些抽象方法，再通过抽象工厂让子类继承父类。所以，抽象工厂其实是<strong>实现子类继承父类的方法。</strong></p>
+<p>上面提到的抽象方法是指声明但不能使用的方法。在其他传统面向对象的语言中常用abstract进行声明，但是在JavaScript中，abstract是属于保留字，但是我们可以通过在类的方法中抛出错误来模拟抽象类。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> UsaShorthair = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">UsaShorthair.prototype = &#123;</span><br><span class="line">  getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'抽象方法不能调用'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码中的 getName 就是抽象方法，我们定义它但是却没有去实现。如果子类继承 UsaShorthair 但是并没有去重写 getName，那么子类的实例化对象就会调用父类的 getName 方法并抛出错误提示。</p>
+<p>下面我们分别来实现猫种类管理的抽象工厂方法:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> TypeCatFactory = <span class="function"><span class="keyword">function</span>(<span class="params">subType, superType</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 抽象工厂中是否有该抽象类</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> TypeCatFactory[superType] === <span class="string">'function'</span>) &#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">    <span class="comment">// 继承父类属性和方法</span></span><br><span class="line">    F.prototype = <span class="keyword">new</span> TypeCatFactory[superType] ()</span><br><span class="line">    <span class="comment">// 子类原型继承父类</span></span><br><span class="line">    subType.prototype = <span class="keyword">new</span> F()</span><br><span class="line">    <span class="comment">// 子类constructor指向自己</span></span><br><span class="line">    subType.prototype.constructor = subType</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'抽象类不存在'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 美短猫抽象类</span></span><br><span class="line">TypeCatFactory.UsaShorthair = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'USA'</span></span><br><span class="line">&#125;</span><br><span class="line">TypeCatFactory.UsaShorthair.prototype = &#123;</span><br><span class="line">  getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'抽象方法不能调用'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 英短猫抽象类</span></span><br><span class="line">TypeCatFactory.BritishShorthair = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.type = <span class="string">'UK'</span></span><br><span class="line">&#125;</span><br><span class="line">TypeCatFactory.BritishShorthair.prototype = &#123;</span><br><span class="line">  getName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'抽象方法不能调用'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>TypeCatFactory 就是一个抽象工厂方法，该方法在参数中传递子类和父类，在方法体内部实现了子类对父类的继承。对抽象工厂方法添加抽象类的方法我们是通过点语法进行添加的。</p>
+<p>下面我们来定义猫的子类:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 美短猫子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CatOfUsa</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 抽象工厂实现 UsaShorthair 类的继承</span></span><br><span class="line">TypeCatFactory(CatOfUsa, <span class="string">'UsaShorthair'</span>)</span><br><span class="line"><span class="comment">// 子类中重写抽象方法</span></span><br><span class="line">CatOfUsa.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 英短猫子类</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">CatOfUk</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 抽象工厂实现 BritishShorthair 类的继承</span></span><br><span class="line">TypeCatFactory(CatOfUk, <span class="string">'BritishShorthair'</span>)</span><br><span class="line"><span class="comment">// 子类中重写抽象方法</span></span><br><span class="line">CatOfUk.prototype.getName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">this</span>.name</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码我们分别定义了CatOfUsa，CatOfUk两种类。这两个类作为子类通过抽象工厂方法实现继承。特别需要注意的是，调用抽象工厂方法后不要忘记重写抽象方法，否则在子类的实例中调用抽象方法会报错。</p>
+<p>我们来分别对这两种类进行实例化，检测抽象工厂方法是实现了类簇的管理。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 实例化美短猫</span></span><br><span class="line"><span class="keyword">var</span> UsaCatA = <span class="keyword">new</span> CatOfUsa(<span class="string">'美短逗逗'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(UsaCatA.getName(), UsaCatA.type) <span class="comment">// 美短逗逗 USA</span></span><br><span class="line"><span class="keyword">var</span> UsaCatB = <span class="keyword">new</span> CatOfUsa(<span class="string">'美短雪饼'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(UsaCatB.getName(), UsaCatB.type) <span class="comment">// 美短雪饼 USA</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 实例化英短猫</span></span><br><span class="line"><span class="keyword">var</span> UkCatA = <span class="keyword">new</span> CatOfUk(<span class="string">'英短逗逗'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(UkCatA.getName(), UkCatA.type) <span class="comment">// 英短逗逗 UK</span></span><br><span class="line"><span class="keyword">var</span> UkCatB = <span class="keyword">new</span> CatOfUk(<span class="string">'英短雪饼'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(UkCatB.getName(), UkCatB.type) <span class="comment">// 英短雪饼 UK</span></span><br></pre></td></tr></table></figure>
+<p>从打印结果上看，TypeCatFactory 这个抽象工厂很好的实现了它的作用，将猫按照不同品种这一个类簇进行了分类。这就是抽象工厂的作用，它不直接创建实例，而是通过类的继承进行类簇的管理。抽象工厂模式一般用在多人协作的超大型项目中，并且严格的要求项目以面向对象的思想进行完成。</p>
+<h2 id="ES6中的工厂模式"><a href="#ES6中的工厂模式" class="headerlink" title="ES6中的工厂模式"></a>ES6中的工厂模式</h2><p>ES6中给我们提供了 class 新语法，虽然 class 本质上是一颗语法糖，并也没有改变 JavaScript 是使用原型继承的语言，但是确实让对象的创建和继承的过程变得更加的清晰和易读。下面我们使用ES6的新语法来重写上面的例子。</p>
+<h3 id="ES6重写简单工厂模式"><a href="#ES6重写简单工厂模式" class="headerlink" title="ES6重写简单工厂模式"></a>ES6重写简单工厂模式</h3>
+      
 
-          
-
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS常用设计模式详解[es5与es6]-构造函数模式（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -229,9 +382,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

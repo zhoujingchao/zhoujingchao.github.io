@@ -155,30 +155,66 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Koa中间件原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-JS常用设计模式详解-es5与es6-工厂模式（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/28/Koa中间件原理/">Koa中间件原理</a>
+      <a class="article-title" href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/">JS常用设计模式详解[es5与es6]-工厂模式（二）</a>
     </h1>
   
 
         
-        <a href="/2018/11/28/Koa中间件原理/" class="archive-article-date">
-  	<time datetime="2018-11-28T08:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
+        <a href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/" class="archive-article-date">
+  	<time datetime="2018-12-17T08:27:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？</p>
-<h2 id="例子输出"><a href="#例子输出" class="headerlink" title="例子输出"></a>例子输出</h2><p><img src="/assets/例子.png" alt=""></p>
+        <h2 id="什么是工厂模式？"><a href="#什么是工厂模式？" class="headerlink" title="什么是工厂模式？"></a>什么是工厂模式？</h2><p>工厂模式是用来创建对象的一种最常用的设计模式，我们不暴露创建对象的具体逻辑，而是提供一个用于创建对象的接口，这个接口由子类决定实例化哪一个类。该模式使一个类的实例化延迟到了子类，而子类可以重写接口方法以便创建的时候指定自己的对象类型。所以这个创建对象的接口函数就可以视为一个工厂。工厂模式根据抽象程度的不同可以分为：简单工厂，工厂方法和抽象工厂。</p>
+<p>下面，我们先以一个场景去简单的理解下抽象和工厂的概念</p>
+<blockquote>
+<p>想象一下你的女朋友生日要到了，你想知道她想要什么礼物，于是你问他：“亲爱哒，生日要到了呢，你想要什么生日礼物咩？”</p>
+</blockquote>
+<blockquote>
+<p>于是她回答你说：“亲爱的，我想要一只动物。”</p>
+</blockquote>
+<blockquote>
+<p>你心平气和（黑人问号？？？）的问她：“想要什么动物啊？”</p>
+</blockquote>
+<blockquote>
+<p>你女友说：“我想要猫科动物。”</p>
+</blockquote>
+<blockquote>
+<p>这时你内心就纳闷了，猫科动物有老虎，狮子，豹子，还有各种小猫，我哪里知道你要什么？</p>
+</blockquote>
+<blockquote>
+<p>于是你接着问女友：“你要哪种猫科动物啊？”</p>
+</blockquote>
+<blockquote>
+<p>“笨死了，还要哪种，肯定是小猫咪啊，难道我们家还能像迪拜土豪那样养老虎啊！”你女朋友答道。</p>
+</blockquote>
+<blockquote>
+<p>“好好， 那你想要哪个品种的猫呢？”你问道。</p>
+</blockquote>
+<blockquote>
+<p>“我想要国外的品种, 不要中国的土猫” 你女友傲娇的回答到。</p>
+</blockquote>
+<blockquote>
+<p>这时你已经快奔溃了，作为程序员的你再也受不了这种挤牙膏式的提问，于是你哀求到：“亲爱的，你就直接告诉我你到底想要哪个品种，哪个颜色，多大的猫？”</p>
+</blockquote>
+<blockquote>
+<p>你女友想了想抖音的那只猫，回答道：“我想要一只银色的，不超过1岁的英短折耳猫！”</p>
+</blockquote>
+<blockquote>
+<p>于是，你在女友生日当天到文二路花鸟市场里面去，挑了一只“银色的，不超过1岁的英短折耳猫”回家送给了你女友, 圆了你女友拥有网红同款猫的梦!<br>  <img src="/assets/cat.jpg" style="width:50%;height:50%;"></p>
+</blockquote>
         
-          <a class="article-more-a" href="/2018/11/28/Koa中间件原理/#more">more >></a>
+          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/#more">more >></a>
         
       
 
@@ -191,7 +227,127 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/28/Koa中间件原理/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-JS常用设计模式详解-es5与es6-构造函数模式（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/">JS常用设计模式详解[es5与es6]-构造函数模式（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/" class="archive-article-date">
+  	<time datetime="2018-12-17T06:32:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Player</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.output = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Irving = <span class="keyword">new</span> Player(<span class="string">'Irving'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> Kobe = <span class="keyword">new</span> Player(<span class="string">'Kobe'</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Irving.output())</span><br><span class="line"><span class="built_in">console</span>.log(Kobe.output())</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-Koa2中间件原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/11/28/Koa2中间件原理/">Koa2中间件原理</a>
+    </h1>
+  
+
+        
+        <a href="/2018/11/28/Koa2中间件原理/" class="archive-article-date">
+  	<time datetime="2018-11-28T08:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？下面我们一起来看看吧。</p>
+<h2 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h2><p><img src="/assets/例子.png" style="width:50%;height:50%;"></p>
+<p>输出就不写了，还不清楚的同学自行尝试下</p>
+        
+          <a class="article-more-a" href="/2018/11/28/Koa2中间件原理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/11/28/Koa2中间件原理/">展开全文 >></a>
         </p>
       
 
@@ -662,137 +818,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/09/29/JS原型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/04/数组扁平化/">数组扁平化</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/04/数组扁平化/" class="archive-article-date">
-  	<time datetime="2017-09-04T07:18:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="扁平化"><a href="#扁平化" class="headerlink" title="扁平化"></a>扁平化</h2><p><strong>数组的扁平化，就是将一个嵌套多层的 array 转换为只有一层的 array</strong></p>
-<p>举个 🌰 ：有个 flatten 函数做扁平化</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, [<span class="number">2</span>, [<span class="number">3</span>, <span class="number">4</span>], <span class="number">5</span>]];</span><br><span class="line"><span class="built_in">console</span>.log(flatten(arr)) <span class="comment">// [1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2017/09/04/数组扁平化/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/04/数组扁平化/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-函数节流和防抖了解一下" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/30/函数节流和防抖了解一下/">函数节流和防抖了解一下</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/30/函数节流和防抖了解一下/" class="archive-article-date">
-  	<time datetime="2017-08-30T03:28:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h2><p><strong>问题1:</strong> 实现dom拖拽功能，但是绑定在拖拽事件的时候每当元素稍微移动一点便触发了大量的毁回调函数，导致浏览器卡死。<br><strong>问题2:</strong> 用户连续输入时需要AJAX请求问题。</p>
-<p>像这种场景实在是太常见了，为了应对便出现了 <code>函数节流</code> 和 <code>函数防抖</code> 这两个概念，总的来说：<br>这两个方法是在<strong>时间轴上控制函数的执行次数</strong>。</p>
-        
-          <a class="article-more-a" href="/2017/08/30/函数节流和防抖了解一下/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/30/函数节流和防抖了解一下/">展开全文 >></a>
         </p>
       
 
@@ -2648,11 +2673,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2661,10 +2690,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,25 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Koa中间件原理 | zhoujingchao.github.io</title>
+  <title>JS常用设计模式详解[es5与es6]-构造函数模式（一） | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？ 例子输出">
-<meta name="keywords" content="前端">
+  <meta name="description" content="基本用法js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。 12345678910111213function Player(name, age) &amp;#123;  this.name = name  this.age = age  this.output = function () &amp;#123;">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Koa中间件原理">
-<meta property="og:url" content="//zhoujingchao.github.io/2018/11/28/Koa中间件原理/index.html">
+<meta property="og:title" content="JS常用设计模式详解[es5与es6]-构造函数模式（一）">
+<meta property="og:url" content="//zhoujingchao.github.io/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？ 例子输出">
-<meta property="og:image" content="//zhoujingchao.github.io/assets/例子.png">
-<meta property="og:image" content="//zhoujingchao.github.io/assets/use.png">
-<meta property="og:image" content="//zhoujingchao.github.io/assets/callback.png">
-<meta property="og:image" content="//zhoujingchao.github.io/assets/compose.png">
-<meta property="og:image" content="//zhoujingchao.github.io/assets/model.png">
-<meta property="og:updated_time" content="2018-12-07T08:31:27.242Z">
+<meta property="og:description" content="基本用法js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。 12345678910111213function Player(name, age) &amp;#123;  this.name = name  this.age = age  this.output = function () &amp;#123;">
+<meta property="og:updated_time" content="2018-12-19T01:19:54.945Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Koa中间件原理">
-<meta name="twitter:description" content="最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？ 例子输出">
-<meta name="twitter:image" content="//zhoujingchao.github.io/assets/例子.png">
+<meta name="twitter:title" content="JS常用设计模式详解[es5与es6]-构造函数模式（一）">
+<meta name="twitter:description" content="基本用法js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。 12345678910111213function Player(name, age) &amp;#123;  this.name = name  this.age = age  this.output = function () &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -160,40 +154,32 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Koa中间件原理" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JS常用设计模式详解-es5与es6-构造函数模式（一）" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Koa中间件原理
+      JS常用设计模式详解[es5与es6]-构造函数模式（一）
     </h1>
   
 
         
-        <a href="/2018/11/28/Koa中间件原理/" class="archive-article-date">
-  	<time datetime="2018-11-28T08:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
+        <a href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/" class="archive-article-date">
+  	<time datetime="2018-12-17T06:32:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？</p>
-<h2 id="例子输出"><a href="#例子输出" class="headerlink" title="例子输出"></a>例子输出</h2><p><img src="/assets/例子.png" alt=""></p>
+        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Player</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.output = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Irving = <span class="keyword">new</span> Player(<span class="string">'Irving'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> Kobe = <span class="keyword">new</span> Player(<span class="string">'Kobe'</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Irving.output())</span><br><span class="line"><span class="built_in">console</span>.log(Kobe.output())</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
-<h2 id="app-use做了什么"><a href="#app-use做了什么" class="headerlink" title="app.use做了什么"></a>app.use做了什么</h2><p>过滤掉一些暂时用不到的代码<br><img src="/assets/use.png" alt=""><br>预先通过use方法，将请求可能会经过的中间件装在了一个数组里</p>
-<h2 id="callback"><a href="#callback" class="headerlink" title="callback"></a>callback</h2><p><img src="/assets/callback.png" alt=""><br>通过 <code>compose()</code> 这个方法，就将我们传入的中间件数组关联起来了，最后 <code>callback()</code> 返回 <code>this.handleRequest()</code> 的执行结果，暂不管返回什么吧，先看看这个神奇的<br><code>compose()</code> 方法做了什么使得文章最开始的例子可以那样执行</p>
-<h2 id="compose"><a href="#compose" class="headerlink" title="compose"></a>compose</h2><p><img src="/assets/compose.png" alt=""></p>
-<ol>
-<li>首先会默认执行第一个中间件，返回 Promise，被 Koa 监听，执行对应逻辑</li>
-<li>在执行第一个中间件的逻辑时，遇到 await next()时，会继续执行 dispatch(i+1)，也就是执行 dispatch(1)，会手动触发执行第二个中间件。这时候，第一个中间件 await next() 后面的代码就会被 pending，等待 await next() 返回 Promise，才会继续执行第一个中间件 await next() 后面的代码。</li>
-<li>以此类推，如果有多个中间件的时候，会依照上面的逻辑不断执行，先执行第一个中间件，在 await next() 出 pending，继续执行第二个中间件，继续在 await next() 出 pending，继续执行第三个中间，直到最后一个中间件执行完，然后返回 Promise，然后倒数第二个中间件才执行后续的代码并返回Promise，然后是倒数第三个中间件，接着一直以这种方式执行直到第一个中间件执行完，并返回 Promise，从而实现开头例子的执行顺序，就好比下面的一张洋葱图</li>
-</ol>
-<p><img src="/assets/model.png" alt=""></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>koa 真香，这 compose() 真骚，所以说评价一个好的程序员不是由代码量决定的</p>
-
+<p>这是个灰常简单的构造函数，所以问题一下就暴漏了。首先继承就麻烦了，其次 output() 每次创建对象的时候都重新定义了，如果有大批量实例的话，内存开销就很大，所以最好的方法是让 Player 实例共享这个 output() 方法</p>
+<h3 id="构造函数与原型"><a href="#构造函数与原型" class="headerlink" title="构造函数与原型"></a>构造函数与原型</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Player</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 强制使用new</span></span><br><span class="line">  <span class="keyword">if</span> (!(<span class="keyword">this</span> <span class="keyword">instanceof</span> Player)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Player(name, age)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Player.prototype.output = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old'</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Irving = <span class="keyword">new</span> Player(<span class="string">'Irving'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> Kobe = <span class="keyword">new</span> Player(<span class="string">'Kobe'</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Irving.output())</span><br><span class="line"><span class="built_in">console</span>.log(Kobe.output())</span><br></pre></td></tr></table></figure>
+<h2 id="ES6"><a href="#ES6" class="headerlink" title="ES6"></a>ES6</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 类的声明</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>(name, age) &#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.age = age</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  output() &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类实例化</span></span><br><span class="line"><span class="keyword">let</span> Irving = <span class="keyword">new</span> Player(<span class="string">'Irving'</span>, <span class="number">18</span>)</span><br><span class="line">Irving.output()</span><br></pre></td></tr></table></figure>
       
 
       
@@ -232,6 +218,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -282,7 +279,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2018/11/28/Koa中间件原理/" alt="微信分享二维码"> -->
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -296,9 +293,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JS常用设计模式详解[es5与es6]-工厂模式（二）
+        
+      </div>
+    </a>
   
-    <a href="/2018/10/06/react服务端渲染/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">react服务端渲染</div>
+  
+    <a href="/2018/11/28/Koa2中间件原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Koa2中间件原理</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -2147,11 +2153,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2160,10 +2170,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
             
             <div class="clearfix"></div>
