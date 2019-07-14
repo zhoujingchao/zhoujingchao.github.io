@@ -155,6 +155,146 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-puppeteer实战系列-截图的诱惑（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/12/puppeteer实战系列-截图的诱惑（二）/">puppeteer实战系列-截图的诱惑（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/12/puppeteer实战系列-截图的诱惑（二）/" class="archive-article-date">
+  	<time datetime="2019-07-12T09:37:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前面一篇文章讲了 puppeteer 的前期开展工作，这篇我们来讲下截图操作</p>
+<p>官方入门 demo</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> puppeteer = <span class="built_in">require</span>(<span class="string">"puppeteer"</span>);</span><br><span class="line">(<span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch();</span><br><span class="line">  <span class="keyword">const</span> page = <span class="keyword">await</span> browser.newPage();</span><br><span class="line">  <span class="keyword">await</span> page.goto(<span class="string">"http://www.baidu.com"</span>);</span><br><span class="line">  <span class="keyword">await</span> page.screenshot(&#123; <span class="attr">path</span>: <span class="string">"baidu.png"</span> &#125;);</span><br><span class="line">  <span class="keyword">await</span> browser.close();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2019/07/12/puppeteer实战系列-截图的诱惑（二）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">puppeteer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/12/puppeteer实战系列-截图的诱惑（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-puppeteer实战系列-介绍及安装（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/12/puppeteer实战系列-介绍及安装（一）/">puppeteer实战系列-介绍及安装（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/12/puppeteer实战系列-介绍及安装（一）/" class="archive-article-date">
+  	<time datetime="2019-07-12T05:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener"><code>Puppeteer</code></a> 是一个 <code>Node</code> 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium</p>
+<h3 id="用处"><a href="#用处" class="headerlink" title="用处"></a>用处</h3><p>可以在浏览器中手动执行的大多数事情都可以使用 <code>Puppeteer</code> 完成！以下是一些可以入门的示例：</p>
+<ol>
+<li>生成页面的屏幕截图和PDF</li>
+<li>爬取SPA应用，并生成预渲染内容（即 <code>SSR</code> 服务端渲染）</li>
+<li>自动化表单提交，UI测试，键盘输入等</li>
+<li>创建最新的自动化测试环境。使用最新的 <code>JavaScript</code> 和浏览器功能直接在最新版本的Chrome中运行测试</li>
+<li>捕获网站的时间线跟踪，以帮助诊断性能问题</li>
+<li>测试Chrome扩展程序</li>
+</ol>
+<h3 id="安装及部署"><a href="#安装及部署" class="headerlink" title="安装及部署"></a>安装及部署</h3>
+        
+          <a class="article-more-a" href="/2019/07/12/puppeteer实战系列-介绍及安装（一）/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">puppeteer</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/12/puppeteer实战系列-介绍及安装（一）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-JS常用设计模式详解-es5与es6-工厂模式（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -190,29 +330,6 @@
 <p>你女友说：“我想要猫科动物。”</p>
 </blockquote>
 <blockquote>
-<p>这时你内心就纳闷了，猫科动物有老虎，狮子，豹子，还有各种小猫，我哪里知道你要什么？</p>
-</blockquote>
-<blockquote>
-<p>于是你接着问女友：“你要哪种猫科动物啊？”</p>
-</blockquote>
-<blockquote>
-<p>“笨死了，还要哪种，肯定是小猫咪啊，难道我们家还能像迪拜土豪那样养老虎啊！”你女朋友答道。</p>
-</blockquote>
-<blockquote>
-<p>“好好， 那你想要哪个品种的猫呢？”你问道。</p>
-</blockquote>
-<blockquote>
-<p>“我想要国外的品种, 不要中国的土猫” 你女友傲娇的回答到。</p>
-</blockquote>
-<blockquote>
-<p>这时你已经快奔溃了，作为程序员的你再也受不了这种挤牙膏式的提问，于是你哀求到：“亲爱的，你就直接告诉我你到底想要哪个品种，哪个颜色，多大的猫？”</p>
-</blockquote>
-<blockquote>
-<p>你女友想了想抖音的那只猫，回答道：“我想要一只银色的，不超过1岁的英短折耳猫！”</p>
-</blockquote>
-<blockquote>
-<p>于是，你在女友生日当天到文二路花鸟市场里面去，挑了一只“银色的，不超过1岁的英短折耳猫”回家送给了你女友, 圆了你女友拥有网红同款猫的梦!<br>  <img src="/assets/cat.jpg" style="width:50%;height:50%;"></p>
-</blockquote>
         
           <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/#more">more >></a>
         
@@ -695,149 +812,9 @@
 
 
   
-    <article id="post-浏览器输入URL到页面加载的过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/13/浏览器输入URL到页面加载的过程/">浏览器输入URL到页面加载的过程</a>
-    </h1>
-  
-
-        
-        <a href="/2017/10/13/浏览器输入URL到页面加载的过程/" class="archive-article-date">
-  	<time datetime="2017-10-13T02:45:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>我们平常输入网址到页面展现这里面究竟发生了哪些事情？</p>
-<p>总体来说可以分为以下几个过程：</p>
-<ol>
-<li>DNS域名解析</li>
-<li>TCP连接</li>
-<li>服务器处理请求</li>
-<li>浏览器解析</li>
-<li>绘制页面</li>
-</ol>
-<h2 id="具体过程"><a href="#具体过程" class="headerlink" title="具体过程"></a>具体过程</h2><h3 id="DNS解析"><a href="#DNS解析" class="headerlink" title="DNS解析"></a>DNS解析</h3><p>DNS解析过程就是寻找哪台机器上有你需要的资源的过程。当你在浏览器中输入一个地址时，例如 <code>www.baidu.com</code>， 其实不是百度网站真正意义上的地址。互联网上每一台计算机的唯一标识是它的IP地址，由于IP地址并不方便记忆，用户更喜欢用方便记忆的网址去寻找互联网上的其他计算机，也就时上面提到的 <code>www.baidu.com</code>。所以互联网设计者需要在用户的方便性与可用性方面做一个权衡，这个权衡就是一个网址到IP地址的转换，此过程即是DNS解析。它实际上充当了一个翻译的角色，实现了网址到IP地址的转换。那么网址到IP地址转换的过程是如何进行的呢？</p>
-        
-          <a class="article-more-a" href="/2017/10/13/浏览器输入URL到页面加载的过程/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">浏览器</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/13/浏览器输入URL到页面加载的过程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/09/29/JS原型/">JS原型</a>
-    </h1>
-  
-
-        
-        <a href="/2017/09/29/JS原型/" class="archive-article-date">
-  	<time datetime="2017-09-29T12:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="1、原型是什么？"><a href="#1、原型是什么？" class="headerlink" title="1、原型是什么？"></a>1、原型是什么？</h2><p>js是一门基于对象的脚本语言，但他没有类的概念。js中的对象是无序属性的集合，其属性可以包含基本值，对象或者函数，类似于键值对的集合。<br>有了对象，按理说得有继承啊，不然对象之间没有任何联系了，也就真的沦为键值对的集合了。</p>
-<p>我们知道，在js中可以使用构造函数来创建一个新对象，像下面这样：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数无返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过 new 创建一个新对象</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'Zhoujc'</span>);</span><br></pre></td></tr></table></figure>
-<p><code>new</code>后面跟的不是类，而是构造函数。这里的构造函数可以看作是一种类型，就像面向对象编程语言中的类，但是这样创建的对象除了属性一样外，并没有其他的任何联系，对象之间无法共享属性和方法。每当我们新建一个对象时，都会分配一块新的内存，这是极大的资源浪费。考虑到这点，js的设计者Brendan Eich决定为构造函数设置一个属性。这个属性指向一个对象，所有实例对象需要共享的属性和方法，都放在这个对象里，那些不需要共享的属性和方法，就放在构造函数里。实例对象一旦创建，将自动引用这个对象的属性和方法。也就是说实例对象的属性和方法分成两种，一种本地的，不共享的，另一种是引用的，共享的。这个就对象就是原型（prototype）对象，简称为原型。</p>
-        
-          <a class="article-more-a" href="/2017/09/29/JS原型/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/09/29/JS原型/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -849,7 +826,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2018 Kyrie Irving
+    		&copy; 2019 Kyrie Irving
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -2669,11 +2646,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2690,6 +2667,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>

@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Tag: css | zhoujingchao.github.io</title>
+  <title>puppeteer实战系列-介绍及安装（一） | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/tags/css/index.html">
+  <meta name="description" content="前言Puppeteer 是一个 Node 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium 用处可以在浏览器中手动执行的大多数事情都可以使用 Puppeteer 完成！以下是一些可以入门的示例：  生成页面的屏幕截图和PDF 爬取SPA应用，并生成预渲染内容（即 S">
+<meta name="keywords" content="puppeteer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="puppeteer实战系列-介绍及安装（一）">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/07/12/puppeteer实战系列-介绍及安装（一）/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="前言Puppeteer 是一个 Node 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium 用处可以在浏览器中手动执行的大多数事情都可以使用 Puppeteer 完成！以下是一些可以入门的示例：  生成页面的屏幕截图和PDF 爬取SPA应用，并生成预渲染内容（即 S">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/nrm-ls.png">
+<meta property="og:updated_time" content="2019-07-12T09:41:30.542Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="puppeteer实战系列-介绍及安装（一）">
+<meta name="twitter:description" content="前言Puppeteer 是一个 Node 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium 用处可以在浏览器中手动执行的大多数事情都可以使用 Puppeteer 完成！以下是一些可以入门的示例：  生成页面的屏幕截图和PDF 爬取SPA应用，并生成预渲染内容（即 S">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/nrm-ls.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,60 +156,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-puppeteer实战系列-介绍及安装（一）" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/21/CSS盒模型的认识/" class="archive-article-date">
-  	<time datetime="2017-02-21T07:21:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-21</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/21/CSS盒模型的认识/">CSS盒模型的认识</a>
+    <h1 class="article-title" itemprop="name">
+      puppeteer实战系列-介绍及安装（一）
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/07/12/puppeteer实战系列-介绍及安装（一）/" class="archive-article-date">
+  	<time datetime="2019-07-12T05:27:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><a href="https://github.com/GoogleChrome/puppeteer" target="_blank" rel="noopener"><code>Puppeteer</code></a> 是一个 <code>Node</code> 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium</p>
+<h3 id="用处"><a href="#用处" class="headerlink" title="用处"></a>用处</h3><p>可以在浏览器中手动执行的大多数事情都可以使用 <code>Puppeteer</code> 完成！以下是一些可以入门的示例：</p>
+<ol>
+<li>生成页面的屏幕截图和PDF</li>
+<li>爬取SPA应用，并生成预渲染内容（即 <code>SSR</code> 服务端渲染）</li>
+<li>自动化表单提交，UI测试，键盘输入等</li>
+<li>创建最新的自动化测试环境。使用最新的 <code>JavaScript</code> 和浏览器功能直接在最新版本的Chrome中运行测试</li>
+<li>捕获网站的时间线跟踪，以帮助诊断性能问题</li>
+<li>测试Chrome扩展程序</li>
+</ol>
+<h3 id="安装及部署"><a href="#安装及部署" class="headerlink" title="安装及部署"></a>安装及部署</h3><a id="more"></a>
+<p>本地 MacOS ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add puppeteer</span><br></pre></td></tr></table></figure></p>
+<p>down不下来就试试换源，推荐 <code>nrm</code> 工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add nrm</span><br></pre></td></tr></table></figure></p>
+<p><img src="/assets/nrm-ls.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p>
+<p>Centos 7 ：<br>需要安装以下依赖，确保截图等任务可以正常执行。（<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md" target="_blank" rel="noopener">更多运行上的问题也可以查看此链接</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc</span><br></pre></td></tr></table></figure></p>
+<p>再设置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(&#123;</span><br><span class="line">  args: [ <span class="string">'--no-sandbox'</span>, <span class="string">'--disable-setuid-sandbox'</span> ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<p>docker :</p>
+<p>官方推荐使用<br>args参数：–disable-dev-shm-usage<br>默认情况下，Docker运行一个/dev/shm共享内存空间为64MB 的容器。这通常对Chrome来说太小，并且会导致Chrome在渲染大页面时崩溃。要修复，必须运行容器 docker run –shm-size=1gb 以增加/dev/shm的容量。从Chrome 65开始，使用–disable-dev-shm-usage标志启动浏览器即可，这将会写入共享内存文件/tmp而不是/dev/shm</p>
+<p>注⚠️：<br>在某些情况下（例如在Docker中）很难正确终止Chrome。如果你遇到很多僵尸Chrome进程，那么 <a href="https://github.com/Yelp/dumb-init" target="_blank" rel="noopener">dumb-init</a> 值得一试。对于PID = 1的进程有特殊处理，</p>
+<p>最后<br>如果还是down不下来puppeteer，那么请戳这里<a href="https://pkgs.org/download/chromium" target="_blank" rel="noopener">下载Chromium</a>，放入对应的环境或者项目里。<br>再设置 <code>.npmrc</code> 跳过下载 Chromium<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puppeteer_skip_chromium_download = true</span><br></pre></td></tr></table></figure></p>
+<p>再启动浏览器<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> options = &#123;</span><br><span class="line">  headless: <span class="literal">true</span>,</span><br><span class="line">  timeout: <span class="number">0</span>,</span><br><span class="line">  args: [ <span class="string">'--no-sandbox'</span>, <span class="string">'--disable-setuid-sandbox'</span> ],</span><br><span class="line">  ignoreHTTPSErrors: <span class="literal">true</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> platform = os.platform().toLocaleLowerCase();</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你所存放的路径</span></span><br><span class="line"><span class="keyword">if</span> (platform === <span class="string">'linux'</span>) &#123;</span><br><span class="line">  options.executablePath = path.join(__dirname, <span class="string">'../../../chrome-linux/chrome'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(options);</span><br></pre></td></tr></table></figure></p>
+<p>Have fun ！</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">css</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">puppeteer</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/07/12/puppeteer实战系列-介绍及安装（一）/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2019/07/12/puppeteer实战系列-截图的诱惑（二）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          puppeteer实战系列-截图的诱惑（二）
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JS常用设计模式详解[es5与es6]-工厂模式（二）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-    
+
 
 
           </div>
@@ -229,9 +361,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
