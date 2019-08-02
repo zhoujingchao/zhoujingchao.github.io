@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="zhoujingchao.github.io">
 <meta property="og:description" content="前言Puppeteer 是一个 Node 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium 用处可以在浏览器中手动执行的大多数事情都可以使用 Puppeteer 完成！以下是一些可以入门的示例：  生成页面的屏幕截图和PDF 爬取SPA应用，并生成预渲染内容（即 S">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/nrm-ls.png">
-<meta property="og:updated_time" content="2019-07-12T09:41:30.542Z">
+<meta property="og:updated_time" content="2019-07-14T08:13:21.341Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="puppeteer实战系列-介绍及安装（一）">
 <meta name="twitter:description" content="前言Puppeteer 是一个 Node 库，它提供了一个高级API来控制DevTools协议上的Chrome或Chromium。 Puppeteer默认运行无头，但可以配置为运行完整（非无头）Chrome或Chromium 用处可以在浏览器中手动执行的大多数事情都可以使用 Puppeteer 完成！以下是一些可以入门的示例：  生成页面的屏幕截图和PDF 爬取SPA应用，并生成预渲染内容（即 S">
@@ -190,9 +190,9 @@
 <p>本地 MacOS ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn add puppeteer</span><br></pre></td></tr></table></figure></p>
 <p>down不下来就试试换源，推荐 <code>nrm</code> 工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yarn global add nrm</span><br></pre></td></tr></table></figure></p>
 <p><img src="/assets/nrm-ls.png" alt=""><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nrm use taobao</span><br></pre></td></tr></table></figure></p>
-<p>Centos 7 ：<br>需要安装以下依赖，确保截图等任务可以正常执行。（<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md" target="_blank" rel="noopener">更多运行上的问题也可以查看此链接</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc</span><br></pre></td></tr></table></figure></p>
+<p>Centos 7 ：<br>需要安装以下依赖，确保任务可以正常执行，相关字体依赖是解决截图后中文乱码问题的。（<a href="https://github.com/GoogleChrome/puppeteer/blob/master/docs/troubleshooting.md" target="_blank" rel="noopener">更多运行上的问题也可以查看此链接</a>）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install pango.x86_64 libXcomposite.x86_64 libXcursor.x86_64 libXdamage.x86_64 libXext.x86_64 libXi.x86_64 libXtst.x86_64 cups-libs.x86_64 libXScrnSaver.x86_64 libXrandr.x86_64 GConf2.x86_64 alsa-lib.x86_64 atk.x86_64 gtk3.x86_64 ipa-gothic-fonts xorg-x11-fonts-100dpi xorg-x11-fonts-75dpi xorg-x11-utils xorg-x11-fonts-cyrillic xorg-x11-fonts-Type1 xorg-x11-fonts-misc</span><br></pre></td></tr></table></figure></p>
 <p>再设置<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> browser = <span class="keyword">await</span> puppeteer.launch(&#123;</span><br><span class="line">  args: [ <span class="string">'--no-sandbox'</span>, <span class="string">'--disable-setuid-sandbox'</span> ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
-<p>docker :</p>
+<p>Docker :</p>
 <p>官方推荐使用<br>args参数：–disable-dev-shm-usage<br>默认情况下，Docker运行一个/dev/shm共享内存空间为64MB 的容器。这通常对Chrome来说太小，并且会导致Chrome在渲染大页面时崩溃。要修复，必须运行容器 docker run –shm-size=1gb 以增加/dev/shm的容量。从Chrome 65开始，使用–disable-dev-shm-usage标志启动浏览器即可，这将会写入共享内存文件/tmp而不是/dev/shm</p>
 <p>注⚠️：<br>在某些情况下（例如在Docker中）很难正确终止Chrome。如果你遇到很多僵尸Chrome进程，那么 <a href="https://github.com/Yelp/dumb-init" target="_blank" rel="noopener">dumb-init</a> 值得一试。对于PID = 1的进程有特殊处理，</p>
 <p>最后<br>如果还是down不下来puppeteer，那么请戳这里<a href="https://pkgs.org/download/chromium" target="_blank" rel="noopener">下载Chromium</a>，放入对应的环境或者项目里。<br>再设置 <code>.npmrc</code> 跳过下载 Chromium<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">puppeteer_skip_chromium_download = true</span><br></pre></td></tr></table></figure></p>
@@ -2176,11 +2176,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
