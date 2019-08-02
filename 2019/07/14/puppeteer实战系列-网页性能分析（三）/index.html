@@ -8,20 +8,20 @@
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
   <title>puppeteer实战系列-网页性能分析（三） | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。 这里笔者是用的 Web performance 收集的，毕竟是原生对吧。 GoogleChro">
+  <meta name="description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。">
 <meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="puppeteer实战系列-网页性能分析（三）">
 <meta property="og:url" content="//zhoujingchao.github.io/2019/07/14/puppeteer实战系列-网页性能分析（三）/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。 这里笔者是用的 Web performance 收集的，毕竟是原生对吧。 GoogleChro">
+<meta property="og:description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/juejin.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/getEntries.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/timing-overview.png">
-<meta property="og:updated_time" content="2019-08-02T06:00:32.026Z">
+<meta property="og:updated_time" content="2019-08-02T06:21:35.908Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="puppeteer实战系列-网页性能分析（三）">
-<meta name="twitter:description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。 这里笔者是用的 Web performance 收集的，毕竟是原生对吧。 GoogleChro">
+<meta name="twitter:description" content="前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。 众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。">
 <meta name="twitter:image" content="//zhoujingchao.github.io/assets/juejin.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
@@ -180,6 +180,7 @@
       
         <p>前两篇文章中，我们讲了安装和截图，这篇我们来讲讲页面性能分析的相关体系。</p>
 <p>众所周知，页面性能优化要讲起来可谓是整大条链路上的事情，在这里笔者将不开展描述，后续笔者会出个全面的性能优化系列文章再进行讲解。回到我们的正题，我们是利用 puppeteer 对页面进行性能数据采集并分析，达到一个性能监控的效果。</p>
+<a id="more"></a>
 <p>这里笔者是用的 <a href="https://developer.mozilla.org/en-US/docs/Learn/Performance" target="_blank" rel="noopener">Web performance</a> 收集的，毕竟是原生对吧。 GoogleChrome 推的 <a href="https://github.com/GoogleChrome/lighthouse" target="_blank" rel="noopener">lighthouse</a> 也是个不错的工具，感兴趣的同学可自行研究 <a href="https://github.com/GoogleChrome/lighthouse" target="_blank" rel="noopener">传送门</a></p>
 <p>当然了，咱们要分析的页面在这里不是咱自家产的，假如是自家页面，那我们只需要将代码包装成sdk，用户访问的时候收集真实数据，再分析即可。所以这里主要是模拟分析第三方的页面。在讲具体操作前，我们先来认识一下 performance，看下图</p>
 <p><img src="/assets/juejin.png" alt=""><br><img src="/assets/getEntries.png" alt=""></p>
@@ -2150,11 +2151,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
