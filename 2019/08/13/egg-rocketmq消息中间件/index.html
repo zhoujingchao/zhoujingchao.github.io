@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>相册 | zhoujingchao.github.io</title>
+  <title>egg-rocketmq消息中间件 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Photos 	Videos   	 	图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild(">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="相册">
-<meta property="og:url" content="//zhoujingchao.github.io/photos/index.html">
+  <meta name="description" content="前一阵子的业务驱使下，出于考虑系统稳定性以及 java 和 node 的解耦性，node端接入了中台已有的 rocketmq 消息中间件，我们 node 业务架子用的是 egg，在这基础上结合中台和相关业务，做过二次框架开发。这回接入 rocketmq 使得编码方式一点都不友好，所有的生产者和消费者业务代码统统不符合 egg 本身编码规范。因此后面利用碎片化时间，撸了一个 egg-rocketmq">
+<meta name="keywords" content="eggjs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="egg-rocketmq消息中间件">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/08/13/egg-rocketmq消息中间件/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="Photos 	Videos   	 	图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild(">
-<meta property="og:updated_time" content="2018-04-21T01:28:47.000Z">
+<meta property="og:description" content="前一阵子的业务驱使下，出于考虑系统稳定性以及 java 和 node 的解耦性，node端接入了中台已有的 rocketmq 消息中间件，我们 node 业务架子用的是 egg，在这基础上结合中台和相关业务，做过二次框架开发。这回接入 rocketmq 使得编码方式一点都不友好，所有的生产者和消费者业务代码统统不符合 egg 本身编码规范。因此后面利用碎片化时间，撸了一个 egg-rocketmq">
+<meta property="og:updated_time" content="2019-08-13T04:48:38.067Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="相册">
-<meta name="twitter:description" content="Photos 	Videos   	 	图片正在加载中…     (function() {     var loadScript = function(path) {       var $script = document.createElement(&apos;script&apos;)       document.getElementsByTagName(&apos;body&apos;)[0].appendChild(">
+<meta name="twitter:title" content="egg-rocketmq消息中间件">
+<meta name="twitter:description" content="前一阵子的业务驱使下，出于考虑系统稳定性以及 java 和 node 的解耦性，node端接入了中台已有的 rocketmq 消息中间件，我们 node 业务架子用的是 egg，在这基础上结合中台和相关业务，做过二次框架开发。这回接入 rocketmq 使得编码方式一点都不友好，所有的生产者和消费者业务代码统统不符合 egg 本身编码规范。因此后面利用碎片化时间，撸了一个 egg-rocketmq">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -154,43 +154,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-photos" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-egg-rocketmq消息中间件" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      相册
+      egg-rocketmq消息中间件
     </h1>
   
 
+        
+        <a href="/2019/08/13/egg-rocketmq消息中间件/" class="archive-article-date">
+  	<time datetime="2019-08-13T03:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+</a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <link rel="stylesheet" href="./ins.css">
-<div class="photos-btn-wrap">
-	<a class="photos-btn active" href="javascript:void(0)" target="_blank" rel="noopener">Photos</a>
-	<a class="photos-btn" href="video.html">Videos</a>
-</div>
-<div class="instagram itemscope">
-	<!-- <a href="https://www.instagram.com/litten225/" target="_blank" class="open-ins">图片来自instagram，正在加载中…</a> -->
-	<a target="_blank" class="open-ins">图片正在加载中…</a>
-</div>
-<script>
-  (function() {
-    var loadScript = function(path) {
-      var $script = document.createElement('script')
-      document.getElementsByTagName('body')[0].appendChild($script)
-      $script.setAttribute('src', path)
-    }
-    setTimeout(function() {
-      loadScript('./ins.js')
-    }, 0)
-  })()
-</script>
+        <p>前一阵子的业务驱使下，出于考虑系统稳定性以及 java 和 node 的解耦性，node端接入了中台已有的 <a href="https://github.com/apache/rocketmq" target="_blank" rel="noopener">rocketmq</a> 消息中间件，我们 node 业务架子用的是 <a href="https://github.com/eggjs/egg" target="_blank" rel="noopener">egg</a>，在这基础上结合中台和相关业务，做过二次框架开发。这回接入 rocketmq 使得编码方式一点都不友好，所有的生产者和消费者业务代码统统不符合 egg 本身编码规范。因此后面利用碎片化时间，撸了一个 <a href="https://github.com/zhoujingchao/egg-rocketmq" target="_blank" rel="noopener">egg-rocketmq</a> 插件，是基于 <a href="https://github.com/apache/rocketmq-client-nodejs" target="_blank" rel="noopener">rocketmq-client-nodejs</a> 扩展的，有需要的或者感兴趣的同学可以试一试。</p>
+
       
 
       
@@ -229,6 +214,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">eggjs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -279,7 +275,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/photos/" alt="微信分享二维码"> -->
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/08/13/egg-rocketmq消息中间件/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -291,6 +287,16 @@
 </article>
 
   
+<nav id="article-nav">
+  
+  
+    <a href="/2019/07/14/puppeteer实战系列-网页性能分析（三）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">puppeteer实战系列-网页性能分析（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
@@ -323,7 +329,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

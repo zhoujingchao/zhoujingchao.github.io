@@ -155,6 +155,68 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-egg-rocketmq消息中间件" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/13/egg-rocketmq消息中间件/">egg-rocketmq消息中间件</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/13/egg-rocketmq消息中间件/" class="archive-article-date">
+  	<time datetime="2019-08-13T03:52:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>前一阵子的业务驱使下，出于考虑系统稳定性以及 java 和 node 的解耦性，node端接入了中台已有的 <a href="https://github.com/apache/rocketmq" target="_blank" rel="noopener">rocketmq</a> 消息中间件，我们 node 业务架子用的是 <a href="https://github.com/eggjs/egg" target="_blank" rel="noopener">egg</a>，在这基础上结合中台和相关业务，做过二次框架开发。这回接入 rocketmq 使得编码方式一点都不友好，所有的生产者和消费者业务代码统统不符合 egg 本身编码规范。因此后面利用碎片化时间，撸了一个 <a href="https://github.com/zhoujingchao/egg-rocketmq" target="_blank" rel="noopener">egg-rocketmq</a> 插件，是基于 <a href="https://github.com/apache/rocketmq-client-nodejs" target="_blank" rel="noopener">rocketmq-client-nodejs</a> 扩展的，有需要的或者感兴趣的同学可以试一试。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">eggjs</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/13/egg-rocketmq消息中间件/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-puppeteer实战系列-网页性能分析（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -716,72 +778,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/04/23/前端安全CSRF&&XSS/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-vue-vuex-vue-router-express-mongoose编写简单的todolist-demo" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/">vue+vuex+vue-router+express+mongoose编写简单的todolist-demo</a>
-    </h1>
-  
-
-        
-        <a href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/" class="archive-article-date">
-  	<time datetime="2018-01-05T03:38:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-01-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近对vue和express感兴趣，趁闲暇时间，写了下前后端分离的todolist。写这篇博文来总结思考下，项目地址如下<br>前端：<a href="&#39;https://github.com/zhoujingchao/vue-router-vuex-todolist">https://github.com/zhoujingchao/vue-router-vuex-todolist</a><br>后端：<a href="&#39;https://github.com/zhoujingchao/express-mongoose-todolist&#39;">https://github.com/zhoujingchao/express-mongoose-todolist</a></p>
-<h2 id="总体概览"><a href="#总体概览" class="headerlink" title="总体概览"></a>总体概览</h2><p><img src="/assets/vue-start-home.png" alt=""></p>
-<p>相信大家也看到了，实现的功能还是很简单的，整个todolist界面分为左侧导航栏和右侧内容，用户可以切换导航，可以添加任务和删除任务。补充说明下这个demo只是自己摸索vue和express过程中做出的，还是有很多不足的地方，希望大家多多指教。</p>
-        
-          <a class="article-more-a" href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/01/05/vue-vuex-vue-router-express-mongoose编写简单的todolist-demo/">展开全文 >></a>
         </p>
       
 
@@ -2629,7 +2625,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2637,7 +2633,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2645,7 +2641,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2654,6 +2650,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
