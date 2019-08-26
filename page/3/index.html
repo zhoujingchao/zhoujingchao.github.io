@@ -155,6 +155,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-移动端webApp踩坑之记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/06/移动端webApp踩坑之记/">移动端webApp踩坑之记</a>
+    </h1>
+  
+
+        
+        <a href="/2017/07/06/移动端webApp踩坑之记/" class="archive-article-date">
+  	<time datetime="2017-07-06T15:32:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>记录一下第一次开发hybrid app，遇到的一些坑。</p>
+<h2 id="一、H5与Native交互"><a href="#一、H5与Native交互" class="headerlink" title="一、H5与Native交互"></a>一、H5与Native交互</h2><p>由于初期项目比较急，没有仔细考虑jsbridge技术。</p>
+<p>ios直接很粗暴的通过协议 <code>localtion.href = jsbridge://methodName?param1=value1&amp;param2=value2</code> 来解决问题</p>
+<p>android就让原生提供一个Android的类，是暴露在window下来调用的</p>
+<p>然后就balabalabala…开始爬坑<br>咦，这什么鬼？<br>怎么我连续多次发起location.href的协议，ios只能接收到最后一次请求？妈蛋，那我就不连续发咯。<br>怎么我在路由跳转的时候做些协议会偶尔不起作用，ios接收不到？<br>强行添加<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;  </span><br><span class="line">  localtion.href = <span class="string">'jsbridge://methodName?param1=value1&amp;param2=value2'</span>;</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br></pre></td></tr></table></figure></p>
+<p>wtf？？？</p>
+<p>想想就不对劲呢，后面利用业余时间查找了下jsbridge相关资料，才恍然大悟。<br>原来js调用oc或swift有3两种方式：</p>
+<ol>
+<li>通过 localtion.href</li>
+<li>通过 iframe 方式；</li>
+<li>ios7新加的 JavaScriptCore <a href="https://www.jianshu.com/p/a329cd4a67ee" target="_blank" rel="noopener">参考链接</a>，提供一个类供js直接调用</li>
+</ol>
+<p>通过location.href有个问题，就是如果我们连续多次修改window.location.href的值，在Native层只能接收到最后一次请求，前面的请求都会被忽略掉，不推荐使用。</p>
+<p>js调用java：</p>
+<ol>
+<li>通过schema方式，使用shouldOverrideUrlLoading方法对url协议进行解析。这种js的调用方式与ios的一样，使用iframe来调用native代码。<br>完整的URL Scheme协议格式：<br>xl://goods:8888/goodsDetail?goodsId=10011002<br>通过上面的路径 Scheme、Host、port、path、query全部包含，基本上平时使用路径就是这样子的。<br>xl代表该Scheme 协议名称<br>goods代表Scheme作用于哪个地址域<br>goodsDetail代表Scheme指定的页面<br>goodsId代表传递的参数<br>8888代表该路径的端口号</li>
+<li>提供一个类给js直接调用</li>
+</ol>
+<p>简单示例iframe封装：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * @param &#123;string&#125; fname </span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">postWebviewData</span>(<span class="params">fname</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> wvIframe = <span class="built_in">document</span>.createElement(‘iframe’);</span><br><span class="line">  wvIframe.style.display = ‘none’;</span><br><span class="line">  waiframe.src = <span class="string">`jsbridge://<span class="subst">$&#123;fname&#125;</span>?param1=value1&amp;param2=value2`</span>;</span><br><span class="line">  <span class="built_in">document</span>.body.appendChild(wvIframe);</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">document</span>.body.removeChild(wvIframe);</span><br><span class="line">  &#125;, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体协议和native商量如何传参，再进行封装就好，然后就能快乐的玩耍了辣。<br>其实我还是建议童鞋们，把ios和android都统一起来用同一种方式。</p>
+<h2 id="二、WebView-性能优化"><a href="#二、WebView-性能优化" class="headerlink" title="二、WebView 性能优化"></a>二、WebView 性能优化</h2><h3 id="1-WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态："><a href="#1-WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态：" class="headerlink" title="1. WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态："></a>1. WebView的启动到js解析，编译，执行，消耗的时间比较久，然后呈现在眼前就是这么几个状态：</h3><ul>
+<li>交互无反馈</li>
+<li>到达新的页面，页面白屏</li>
+<li>页面基本框架出现，但是没有数据；页面处于loading状态</li>
+<li>最后出现所需的数据</li>
+</ul>
+        
+          <a class="article-more-a" href="/2017/07/06/移动端webApp踩坑之记/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">移动端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/07/06/移动端webApp踩坑之记/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-一道经典的js面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2268,19 +2358,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">

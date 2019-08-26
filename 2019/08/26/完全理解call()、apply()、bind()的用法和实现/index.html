@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Archives: 2017/3 | zhoujingchao.github.io</title>
+  <title>完全理解call()、apply()、bind()的用法和实现 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/archives/2017/03/index.html">
+  <meta name="description" content="首先我们都知道这三兄弟都是为了改变函数运行时上下文(this指向)而存在的。 那么到底是个怎么回事呢，我们直接看下面得例子，来体验下： 123456789101112131415const name = &apos;Kobe&apos;, age = 18;const player = &amp;#123;  name: &apos;Irving&apos;,  age: this.age,  func: function() &amp;#123;">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="完全理解call()、apply()、bind()的用法和实现">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/08/26/完全理解call()、apply()、bind()的用法和实现/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="首先我们都知道这三兄弟都是为了改变函数运行时上下文(this指向)而存在的。 那么到底是个怎么回事呢，我们直接看下面得例子，来体验下： 123456789101112131415const name = &apos;Kobe&apos;, age = 18;const player = &amp;#123;  name: &apos;Irving&apos;,  age: this.age,  func: function() &amp;#123;">
+<meta property="og:updated_time" content="2019-08-26T07:57:28.150Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="完全理解call()、apply()、bind()的用法和实现">
+<meta name="twitter:description" content="首先我们都知道这三兄弟都是为了改变函数运行时上下文(this指向)而存在的。 那么到底是个怎么回事呢，我们直接看下面得例子，来体验下： 123456789101112131415const name = &apos;Kobe&apos;, age = 18;const player = &amp;#123;  name: &apos;Irving&apos;,  age: this.age,  func: function() &amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,36 +154,83 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-完全理解call()、apply()、bind()的用法和实现" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/24/一道经典的js面试题/" class="archive-article-date">
-  	<time datetime="2017-03-24T02:08:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-24</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/24/一道经典的js面试题/">一道经典的js面试题</a>
+    <h1 class="article-title" itemprop="name">
+      完全理解call()、apply()、bind()的用法和实现
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2019/08/26/完全理解call()、apply()、bind()的用法和实现/" class="archive-article-date">
+  	<time datetime="2019-08-26T02:16:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们都知道这三兄弟都是为了改变函数运行时上下文(this指向)而存在的。</p>
+<p>那么到底是个怎么回事呢，我们直接看下面得例子，来体验下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'Kobe'</span>, age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> player = &#123;</span><br><span class="line">  name: <span class="string">'Irving'</span>,</span><br><span class="line">  age: <span class="keyword">this</span>.age,</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getName</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">player.age <span class="comment">// this 指向 player -&gt; 18</span></span><br><span class="line">player.func() <span class="comment">// this 指向 player -&gt; Irving is 18 years old</span></span><br><span class="line">getName() <span class="comment">// this 指向 window -&gt; Kobe</span></span><br></pre></td></tr></table></figure>
+<p>下面我们来看看三兄弟的用法</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'Kobe'</span>, age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> player = &#123;</span><br><span class="line">  name: <span class="string">'Irving'</span>,</span><br><span class="line">  age: <span class="keyword">this</span>.age || <span class="number">16</span>,</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> otherPlayer = &#123;</span><br><span class="line">  name: <span class="string">'Wade'</span>,</span><br><span class="line">  age: <span class="number">17</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">player.func.call(otherPlayer) <span class="comment">// Wade is 17 years old</span></span><br><span class="line">player.func.apply(otherPlayer) <span class="comment">// Wade is 17 years old</span></span><br><span class="line">player.func.bind(otherPlayer)() <span class="comment">// Wade is 17 years old</span></span><br></pre></td></tr></table></figure>
+<p>这里我们可以看出，一个参数的情况下，call和apply返回了相同的结果，bind呢则是返回了一个新的函数，你要执行它在返回结果。</p>
+<p>接着看下多个参数的情况：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> name = <span class="string">'Kobe'</span>, age = <span class="number">18</span>;</span><br><span class="line"><span class="keyword">const</span> player = &#123;</span><br><span class="line">  name: <span class="string">'Irving'</span>,</span><br><span class="line">  age: <span class="keyword">this</span>.age || <span class="number">16</span>,</span><br><span class="line">  func: <span class="function"><span class="keyword">function</span>(<span class="params">from, team</span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;<span class="keyword">this</span>.name&#125;</span> is <span class="subst">$&#123;<span class="keyword">this</span>.age&#125;</span> years old, from <span class="subst">$&#123;<span class="keyword">from</span>&#125;</span>, play in the <span class="subst">$&#123;team&#125;</span>`</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> otherPlayer = &#123;</span><br><span class="line">  name: <span class="string">'Wade'</span>,</span><br><span class="line">  age: <span class="number">17</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">player.func.call(otherPlayer, <span class="string">'Chicago'</span>, <span class="string">'Heat'</span>) <span class="comment">// Wade is 17 years old, from Chicago, play in the Heat</span></span><br><span class="line">player.func.apply(otherPlayer, [<span class="string">'Chicago'</span>, <span class="string">'Heat'</span>]) <span class="comment">// Wade is 17 years old, from Chicago, play in the Heat</span></span><br><span class="line">player.func.bind(otherPlayer, <span class="string">'Chicago'</span>, <span class="string">'Heat'</span>)() <span class="comment">// Wade is 17 years old, from Chicago, play in the Heat</span></span><br><span class="line">player.func.bind(otherPlayer, [<span class="string">'Chicago'</span>, <span class="string">'Heat'</span>])() <span class="comment">// Wade is 17 years old, from Chicago,Heat, play in undefined</span></span><br></pre></td></tr></table></figure>
+<p>我们又发现 <code>call</code> 是一个一个参数来接收的，<code>apply</code> 则是接受了一个列表，<code>bind</code> 则是除了返回函数以外，其他参数和 <code>call</code> 一样。所以看自己的应用场景来取择即可，你想要着重展现参数的意义就可以选 <code>call</code>，当然参数不仅仅是例子上的 <code>string</code> 类型，其他均可以。</p>
+<p>看到这里是不是对这三兄弟是咋玩的有了一定的了解啦，接下去我们就去自己模拟实现它们，从而对他们加深理解。</p>
+<p>模拟实现 call</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._call = <span class="function"><span class="keyword">function</span>(<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 假如没传上下文 context 默认取 window</span></span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="built_in">Function</span>.prototype) <span class="keyword">return</span>; <span class="comment">// 用于防止 Function.prototype._call() 直接调用</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 新建一个不会重名的属性，防止重写</span></span><br><span class="line">  <span class="keyword">const</span> attr = <span class="built_in">Symbol</span>()</span><br><span class="line">  context[attr] = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// 把类数组变为数组，过滤 window 参数</span></span><br><span class="line">  <span class="keyword">const</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">const</span> result = context[attr](args)</span><br><span class="line">  <span class="keyword">delete</span> context[attr] </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模拟实现 apply</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._apply = <span class="function"><span class="keyword">function</span>(<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span> === <span class="built_in">Function</span>.prototype) <span class="keyword">return</span>;</span><br><span class="line">  <span class="keyword">const</span> attr = <span class="built_in">Symbol</span>()</span><br><span class="line">  context[attr] = <span class="keyword">this</span></span><br><span class="line">  <span class="comment">// 取出参数列表</span></span><br><span class="line">  <span class="keyword">const</span> args = [...arguments][<span class="number">1</span>]</span><br><span class="line">  <span class="keyword">let</span> result;</span><br><span class="line">  <span class="keyword">if</span> (!args) &#123;</span><br><span class="line">    result = context[attr]()</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    result = context[attr](...args)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">delete</span> context[attr] </span><br><span class="line">  <span class="keyword">return</span> result</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>模拟实现 bind</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype._bind = <span class="function"><span class="keyword">function</span>(<span class="params">context = window</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> self = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">const</span> args = [...arguments].slice(<span class="number">1</span>)</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> newArg = [...arguments]</span><br><span class="line">    <span class="keyword">return</span> self.apply(context, args.concat(newArg))</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这下是不是完全理解这三兄弟了呢，他们就是为了改变函数运行时上下文而来的，根据实际情况来选择使用即可。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -194,57 +242,88 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/08/26/完全理解call()、apply()、bind()的用法和实现/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/13/JS基本面试题/" class="archive-article-date">
-  	<time datetime="2017-03-13T07:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-13</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/13/JS基本面试题/">JS基本面试题</a>
-    </h1>
+  
+    <a href="/2019/08/19/React源码解析-组件的实现与挂载（一）/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React源码解析-组件的实现与创建（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -267,8 +346,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

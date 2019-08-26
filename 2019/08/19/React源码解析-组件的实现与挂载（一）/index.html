@@ -6,12 +6,12 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>React源码解析-组件的实现与创建更新（一） | zhoujingchao.github.io</title>
+  <title>React源码解析-组件的实现与创建（一） | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从以下图几个方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
 <meta name="keywords" content="react">
 <meta property="og:type" content="article">
-<meta property="og:title" content="React源码解析-组件的实现与创建更新（一）">
+<meta property="og:title" content="React源码解析-组件的实现与创建（一）">
 <meta property="og:url" content="//zhoujingchao.github.io/2019/08/19/React源码解析-组件的实现与挂载（一）/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
 <meta property="og:description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从以下图几个方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
@@ -21,9 +21,9 @@
 <meta property="og:image" content="//zhoujingchao.github.io/assets/component.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/component-2.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/component-3.png">
-<meta property="og:updated_time" content="2019-08-21T02:25:01.806Z">
+<meta property="og:updated_time" content="2019-08-23T03:27:04.257Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="React源码解析-组件的实现与创建更新（一）">
+<meta name="twitter:title" content="React源码解析-组件的实现与创建（一）">
 <meta name="twitter:description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从以下图几个方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
 <meta name="twitter:image" content="//zhoujingchao.github.io/assets/react.png">
   
@@ -168,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      React源码解析-组件的实现与创建更新（一）
+      React源码解析-组件的实现与创建（一）
     </h1>
   
 
@@ -244,7 +244,7 @@
 </table>
 <p>总的来说，<code>ReactElement</code> 就是一个用来承载信息的容器，对于后期构建应用的树结构是非常重要的。</p>
 <p><img src="/assets/component-2.png" alt=""></p>
-<h2 id="二、组件的创建及更新"><a href="#二、组件的创建及更新" class="headerlink" title="二、组件的创建及更新"></a>二、组件的创建及更新</h2><p>我们知道可以通过 <code>ReactDOM.render(component, mountNode)</code>的形式对自定义组件/原生DOM/字符串进行挂载。</p>
+<h2 id="二、组件的创建"><a href="#二、组件的创建" class="headerlink" title="二、组件的创建"></a>二、组件的创建</h2><p>我们知道可以通过 <code>ReactDOM.render(component, mountNode)</code>的形式对自定义组件/原生DOM/字符串进行挂载。</p>
 <p>我们看下源码实现，找到react-dom内umd规范下的 <code>react-dom.development.js</code>，找到 <code>render</code> 方法看一下：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">element, container, callback</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> legacyRenderSubtreeIntoContainer(<span class="literal">null</span>, element, container, <span class="literal">false</span>, callback);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">legacyRenderSubtreeIntoContainer</span>(<span class="params">parentComponent, children, container, forceHydrate, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">   <span class="keyword">var</span> root = container._reactRootContainer;</span><br><span class="line">  <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">    <span class="comment">// Initial mount</span></span><br><span class="line">    root = container._reactRootContainer = legacyCreateRootFromDOMContainer(container, forceHydrate);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> originalCallback = callback;</span><br><span class="line">      callback = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> instance = getPublicRootInstance(root._internalRoot);</span><br><span class="line">        originalCallback.call(instance);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Initial mount should not be batched.</span></span><br><span class="line">    unbatchedUpdates(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (parentComponent != <span class="literal">null</span>) &#123;</span><br><span class="line">        root.legacy_renderSubtreeIntoContainer(parentComponent, children, callback);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        root.render(children, callback);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> _originalCallback = callback;</span><br><span class="line">      callback = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> instance = getPublicRootInstance(root._internalRoot);</span><br><span class="line">        _originalCallback.call(instance);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Update</span></span><br><span class="line">    <span class="keyword">if</span> (parentComponent != <span class="literal">null</span>) &#123;</span><br><span class="line">      root.legacy_renderSubtreeIntoContainer(parentComponent, children, callback);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      root.render(children, callback);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> getPublicRootInstance(root._internalRoot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -382,6 +382,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2019/08/26/完全理解call()、apply()、bind()的用法和实现/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          完全理解call()、apply()、bind()的用法和实现
+        
+      </div>
+    </a>
   
   
     <a href="/2019/08/13/egg-rocketmq消息中间件/" id="article-nav-older" class="article-nav-link-wrap">
@@ -2234,19 +2243,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">性能</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">性能</a>
               </li>
              
               <li class="article-tag-list-item">
