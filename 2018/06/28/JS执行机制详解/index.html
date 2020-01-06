@@ -18,7 +18,8 @@
 <meta property="og:image" content="//zhoujingchao.github.io/assets/想三天.jpg">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/事件循环.png">
 <meta property="og:image" content="//zhoujingchao.github.io/assets/宏任务与微任务.png">
-<meta property="og:updated_time" content="2018-07-07T10:03:48.156Z">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/node-event-loop.webp">
+<meta property="og:updated_time" content="2020-01-02T15:26:39.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS执行机制详解">
 <meta name="twitter:description" content="前言前一阵子遇到的面试题，此时再巩固一下 javasrcipt 的执行机制。 12345678910111213141516171819202122232425262728console.log(1)setTimeout(() =&amp;gt; &amp;#123;  console.log(2)  new Promise(resolve =&amp;gt; &amp;#123;    console.log(3)    re">
@@ -210,8 +211,8 @@
 </ol>
 <h3 id="micro-task-与-macro-task"><a href="#micro-task-与-macro-task" class="headerlink" title="micro task 与 macro task"></a>micro task 与 macro task</h3><p>异步任务的优先级并不相同，它们被分为两类： </p>
 <ol>
-<li>微任务（micro task）: 包括整体代码script，setTimeout，serInterval</li>
-<li>宏任务（macro task）：Promise，process.nextTick</li>
+<li>微任务（micro task）: Promise，process.nextTick，MutationObserver</li>
+<li>宏任务（macro task）：包括整体代码script，setTimeout，serInterval，setImmediate，I/O，UIrendering</li>
 </ol>
 <p>根据异步事件的类型，这些事件会被派发到对应的微任务和宏任务中，在当前主线程执行完毕后：</p>
 <ol>
@@ -257,7 +258,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">promise</span><br><span class="line"><span class="built_in">console</span></span><br><span class="line">then</span><br><span class="line">setTimeout</span><br></pre></td></tr></table></figure>
 <p>最后回过头来，让我们再分析下最开始的代码</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// setTimeout1</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">2</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">    resolve()</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// then4</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">4</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">5</span>)</span><br><span class="line">  resolve()</span><br><span class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// then6</span></span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">6</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// setTimeout2</span></span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="number">7</span>)</span><br><span class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">8</span>)</span><br><span class="line">    resolve()</span><br><span class="line">  &#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// then9</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">9</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>为了方便下面记录分析，先在代码上做个标记</p>
+<p>为了方便下面记录分析，先在代码上做个标记。再根据上面的事件循环导图就可以得出以下结论：</p>
 <p>第一轮事件循环</p>
 <ol>
 <li>宏任务： 整体script</li>
@@ -276,10 +277,50 @@
 <li>微任务：then9</li>
 <li>输出7，8，9</li>
 </ol>
-<h3 id="总结与思考"><a href="#总结与思考" class="headerlink" title="总结与思考"></a>总结与思考</h3><ol>
+<h3 id="Node-Event-Loop"><a href="#Node-Event-Loop" class="headerlink" title="Node Event Loop"></a>Node Event Loop</h3><p>当 nodejs 启动后，它会初始化事件轮训，它可能会调用一些异步API，调度定时器，或者 <code>process.nextTick()</code> 等，然后开始处理事件循环。</p>
+<p>它会分为6个阶段，按照顺序循环进行：</p>
+<p><img src="/assets/node-event-loop.webp" alt=""></p>
+<h4 id="timer"><a href="#timer" class="headerlink" title="timer"></a>timer</h4><p>本阶段执行 <code>setTimeout</code> 和 <code>setInterval</code> 的回调。</p>
+<p>计时器指定可以执行所提供回调的阈值，而不是用户希望其执行的确切时间。在指定的一段时间间隔后， 计时器回调将被尽可能早地运行。但是，操作系统调度或其它正在运行的回调可能会延迟它们。它们由 poll 阶段控制何时执行</p>
+<h4 id="I-O"><a href="#I-O" class="headerlink" title="I/O"></a>I/O</h4><p>上一轮未执行的，被延迟到下一个循环迭代的I/O回调</p>
+<h4 id="idle，prepare"><a href="#idle，prepare" class="headerlink" title="idle，prepare"></a>idle，prepare</h4><p>系统内部使用</p>
+<h4 id="poll"><a href="#poll" class="headerlink" title="poll"></a>poll</h4><p>轮询阶段会有两个重要功能：</p>
+<ol>
+<li>计算阻塞和 poll I/O的时间</li>
+<li>执行 poll 队列里的事件</li>
+</ol>
+<p>并且在进入该阶段时如果没有设定了 timer 的话，会发生以下两件事情</p>
+<ol>
+<li>如果 poll 队列不为空，会遍历回调队列并同步执行，直到队列为空或者达到系统限制</li>
+<li>如果 poll 队列为空时，会有两件事发生：</li>
+</ol>
+<ul>
+<li><ol>
+<li>如果有 <code>setImmediate</code> 回调需要执行，poll 阶段会停止并且进入到 check 阶段执行回调</li>
+</ol>
+</li>
+<li><ol>
+<li>如果没有 <code>setImmediate</code> 回调需要执行，会等待回调被加入到队列中并立即执行回调，这里同样会有个超时时间设置防止一直等待下去</li>
+</ol>
+</li>
+</ul>
+<p>当然设定了 timer 的话且 poll 队列为空，则会判断是否有 timer 超时，如果有的话会回到 timer 阶段执行回调。</p>
+<h4 id="check"><a href="#check" class="headerlink" title="check"></a>check</h4><p>check 阶段执行 <code>setImmediate</code></p>
+<h4 id="close-callbacks"><a href="#close-callbacks" class="headerlink" title="close callbacks"></a>close callbacks</h4><p>如果套接字或句柄突然关闭（例如<code>socket.destroy()</code>），则在此阶段将发出’close’事件。否则它将通过<code>process.nextTick()</code>发出。</p>
+<p>了解了这些阶段后，我们通过一些代码再来理解一下。</p>
+<p>首先在某种特定的情况下，定时器timer的执行顺序是随机的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'setTimeout'</span>)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line">setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'setImmediate'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果是 setTimeout 可能执行在前也可能在后。<br>事件循环的延迟可能足够低，以至于计时器在立即触发后触发，本身事件循环也是需要成本的，如果在准备时候花费了大于 1ms 的时间，那么在 timer 阶段就会直接执行 setTimeout 回调，如果准备时间花费小于 1ms，那么就是 setImmediate 回调先执行了。</p>
+<p>在下面这个场景下，执行顺序一定是固定的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">fs.readFile(__filename, () =&gt; &#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'timeout'</span>);</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">  setImmediate(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'immediate'</span>)</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，setImmediate 永远先执行。因为两个代码写在 IO 回调中，IO 回调是在 poll 阶段执行，当回调执行完毕后队列为空，发现存在 setImmediate 回调，所以就直接跳转到 check 阶段去执行回调了。</p>
+<p>最后我们来看看 Node 中的 <code>process.nextTick</code>，这个函数其实是独立于 Event Loop 之外的，它有一个自己的队列，当每个阶段完成后，如果存在 nextTick 队列，就会清空队列中的所有回调函数，并且优先于其他 microtask 执行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'timer1'</span>)</span><br><span class="line"></span><br><span class="line"> <span class="built_in">Promise</span>.resolve().then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'promise1'</span>)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'nextTick'</span>)</span><br><span class="line"> process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">'nextTick'</span>)</span><br><span class="line">   process.nextTick(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'nextTick'</span>)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>对于以上代码，无论如何，永远都是先把 nextTick 全部打印出来。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>javascript 是一门单线程语言</li>
 <li>Event Loop是 javascript 的执行机制</li>
-<li>在 node 中执行机制又是如何？</li>
+<li>EVent Loop在浏览器和 Node 环境下却又是完全不一样的机制</li>
 </ol>
 
       
@@ -431,7 +472,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 Kyrie Irving
+    		&copy; 2020 Kyrie Irving
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -2251,11 +2292,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2271,15 +2312,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
             
             <div class="clearfix"></div>
