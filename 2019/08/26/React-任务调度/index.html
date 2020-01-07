@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Tag: react | zhoujingchao.github.io</title>
+  <title>React-任务调度 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/tags/react/index.html">
+  <meta name="description" content="上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。 Reconciler在16+的React版本 Fiber Reconciler（调和器）  推出之前，React 用的是 Stack Reconciler，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-任务调度">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/08/26/React-任务调度/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。 Reconciler在16+的React版本 Fiber Reconciler（调和器）  推出之前，React 用的是 Stack Reconciler，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/component-3.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/react-20.png">
+<meta property="og:updated_time" content="2020-01-07T03:16:50.704Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="React-任务调度">
+<meta name="twitter:description" content="上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。 Reconciler在16+的React版本 Fiber Reconciler（调和器）  推出之前，React 用的是 Stack Reconciler，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/component-3.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,160 +157,91 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React-任务调度" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/React-理解setState/" class="archive-article-date">
-  	<time datetime="2019-09-07T03:18:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/React-理解setState/">React-理解setState</a>
+    <h1 class="article-title" itemprop="name">
+      React-任务调度
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/React-任务调度/" class="archive-article-date">
+        
+        <a href="/2019/08/26/React-任务调度/" class="archive-article-date">
   	<time datetime="2019-08-26T09:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/React-任务调度/">React-任务调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/19/React-组件的实现与挂载/" class="archive-article-date">
-  	<time datetime="2019-08-19T08:03:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/19/React-组件的实现与挂载/">React-组件的初始化与挂载</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
+        <p>上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。</p>
+<h3 id="Reconciler"><a href="#Reconciler" class="headerlink" title="Reconciler"></a>Reconciler</h3><p>在16+的React版本 <a href="https://github.com/acdlite/react-fiber-architecture" target="_blank" rel="noopener">Fiber Reconciler（调和器）
+</a> 推出之前，React 用的是 <a href="https://reactjs.org/docs/implementation-notes.html" target="_blank" rel="noopener">Stack Reconciler</a>，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，假如交互反馈延迟稍微大一丢丢，就会有明显的卡顿，这是影响体验的。</p>
+<p>而 Fiber 就是为了解决上面的问题而诞生的，它把渲染或者更新过程拆分成一系列小任务，做完看是否有时间继续下一个任务，有的话继续，没有则自己挂起，主线程优先做更高优先级的任务，待到主线程不忙的时候再继续不太紧急的任务。这一切的实现是在代码层引入了新的数据结构对象 Fiber ，每一个组件实例都对应一个fiber实例，fiber实例负责管理组件实例的更新，渲染以及与其他fiber实例的联系。</p>
+<a id="more"></a>
+<p>初步了解 Fiber 的目的以后，我们回到上一章节的思维导图：</p>
+<p><img src="/assets/component-3.png" alt=""></p>
+<p>首先我们去看下 Fiber 的数据结构，从 <code>createFiberRoot()</code> 切入，我们发现最终调用 <code>new FiberNode()</code> 创建了一个作用于组件的 Fiber 对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FiberNode</span>(<span class="params">tag, pendingProps, key, mode</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 标记不同的组件类型</span></span><br><span class="line">  <span class="keyword">this</span>.tag = tag;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ReactElement 里面的 key</span></span><br><span class="line">  <span class="keyword">this</span>.key = key;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ReactElement.type，也就是我们调用`createElement`的第一个参数</span></span><br><span class="line">  <span class="keyword">this</span>.elementType = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// fiber 对应的 function/class/module 类型组件名.</span></span><br><span class="line">  <span class="keyword">this</span>.type = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// fiber 所在组件树的根组件 FiberRoot 对象</span></span><br><span class="line">  <span class="keyword">this</span>.stateNode = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理完当前 fiber 后返回的 fiber，</span></span><br><span class="line">  <span class="comment">// 返回当前 fiber 所在 fiber 树的父级 fiber 实例</span></span><br><span class="line">  <span class="keyword">this</span>.return = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// fiber 树结构相关属性</span></span><br><span class="line">  <span class="comment">// 指向自己的第一个子节点</span></span><br><span class="line">  <span class="keyword">this</span>.child = <span class="literal">null</span>;</span><br><span class="line">  <span class="comment">// 指向自己的兄弟结构</span></span><br><span class="line">  <span class="keyword">this</span>.sibling = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">this</span>.index = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ref属性</span></span><br><span class="line">  <span class="keyword">this</span>.ref = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 当前处理过程中的组件 props 对象</span></span><br><span class="line">  <span class="keyword">this</span>.pendingProps = pendingProps;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 缓存上一次渲染完成之后的 props 对象</span></span><br><span class="line">  <span class="keyword">this</span>.memoizedProps = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 该组件状态更新及对应回调函数的存储队列</span></span><br><span class="line">  <span class="keyword">this</span>.updateQueue = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 上一次渲染的时候的state</span></span><br><span class="line">  <span class="keyword">this</span>.memoizedState = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 存放这个 fiber 依赖的 context</span></span><br><span class="line">  <span class="keyword">this</span>.contextDependencies = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建时候的标识，用来描述当前 fiber 和它子树的</span></span><br><span class="line">  <span class="keyword">this</span>.mode = mode;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Effects</span></span><br><span class="line">  <span class="comment">// 用来记录Side Effect</span></span><br><span class="line">  <span class="keyword">this</span>.effectTag = NoEffect;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 单链表用来快速查找下一个side effect</span></span><br><span class="line">  <span class="keyword">this</span>.nextEffect = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 子树中第一个side effect</span></span><br><span class="line">  <span class="keyword">this</span>.firstEffect = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 子树中最后一个side effect</span></span><br><span class="line">  <span class="keyword">this</span>.lastEffect = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 更新任务的最晚执行时间，注意不包括他的子树产生的任务</span></span><br><span class="line">  <span class="keyword">this</span>.expirationTime = NoWork;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 快速确定子树中是否有不在等待的变化</span></span><br><span class="line">  <span class="keyword">this</span>.childExpirationTime = NoWork;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// fiber的版本池，记录fiber更新过程，便于在发生冲突需要回退时快速恢复</span></span><br><span class="line">  <span class="keyword">this</span>.alternate = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 调试相关，收集每个Fiber和子树渲染时间的</span></span><br><span class="line">  <span class="keyword">if</span> (enableProfilerTimer) &#123;</span><br><span class="line">    <span class="keyword">this</span>.actualDuration = <span class="built_in">Number</span>.NaN;</span><br><span class="line">    <span class="keyword">this</span>.actualStartTime = <span class="built_in">Number</span>.NaN;</span><br><span class="line">    <span class="keyword">this</span>.selfBaseDuration = <span class="built_in">Number</span>.NaN;</span><br><span class="line">    <span class="keyword">this</span>.treeBaseDuration = <span class="built_in">Number</span>.NaN;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.actualDuration = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.actualStartTime = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">this</span>.selfBaseDuration = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">this</span>.treeBaseDuration = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">this</span>._debugID = debugCounter++;</span><br><span class="line">    <span class="keyword">this</span>._debugSource = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>._debugOwner = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">this</span>._debugIsCurrentlyTiming = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">this</span>._debugHookTypes = <span class="literal">null</span>;</span><br><span class="line">    <span class="keyword">if</span> (!hasBadMapPolyfill &amp;&amp; <span class="keyword">typeof</span> <span class="built_in">Object</span>.preventExtensions === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="built_in">Object</span>.preventExtensions(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>都说 Fiber 可以切分任务并设置不同优先级，它是如何做的又是怎样表现的？<br>从上面的数据结构是不是就可以看出来了？就是 <code>expirationTime</code> ，实现调度的方式正是<b>给每一个fiber实例设置到期执行时间，不同时间即代表不同优先级，到期时间越短，则代表优先级越高，需要尽早执行</b>。</p>
+<p>下面我们接着看看任务调度那一块 <code>scheduleRootUpdate()</code></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleRootUpdate</span>(<span class="params">current$$<span class="number">1</span>, element, expirationTime, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建一个更新用的初始化对象</span></span><br><span class="line">  <span class="keyword">var</span> update = createUpdate(expirationTime);</span><br><span class="line">  update.payload = &#123; <span class="attr">element</span>: element &#125;;</span><br><span class="line"></span><br><span class="line">  callback = callback === <span class="literal">undefined</span> ? <span class="literal">null</span> : callback;</span><br><span class="line">  <span class="keyword">if</span> (callback !== <span class="literal">null</span>) &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    update.callback = callback;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据回调来判断是关闭还是跟踪状态</span></span><br><span class="line">  flushPassiveEffects();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 记录当前fiber的版本，加入更新队列</span></span><br><span class="line">  enqueueUpdate(current$$<span class="number">1</span>, update);</span><br><span class="line">  scheduleWork(current$$<span class="number">1</span>, expirationTime);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> expirationTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>scheduleWork</code> 这一步非常重要，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleWork</span>(<span class="params">fiber, expirationTime</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 找到当前 Fiber的 root</span></span><br><span class="line">  <span class="keyword">var</span> root = scheduleWorkToRoot(fiber, expirationTime);</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果不是工作状态，并且之前执行过任务，并且当前任务执行的时间比之前的执行的任务时间要大(就是优先级要低的意思)</span></span><br><span class="line">  <span class="keyword">if</span> (!isWorking &amp;&amp; nextRenderExpirationTime !== NoWork &amp;&amp; expirationTime &gt; nextRenderExpirationTime) &#123;</span><br><span class="line">    <span class="comment">// 中断任务</span></span><br><span class="line">    interruptedBy = fiber;</span><br><span class="line">    <span class="comment">// 重置所有公共变量</span></span><br><span class="line">    resetStack();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 记录各项时间</span></span><br><span class="line">  markPendingPriorityLevel(root, expirationTime);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 如果在渲染阶段，我们会在退出之前安排好更新，除非这是一个不同的根(应用程序有多个root)。</span></span><br><span class="line">  <span class="keyword">if</span> (!isWorking || isCommitting$<span class="number">1</span> || nextRoot !== root) &#123;</span><br><span class="line">    <span class="comment">// 更新过期时间</span></span><br><span class="line">    <span class="keyword">var</span> rootExpirationTime = root.expirationTime;</span><br><span class="line">    <span class="comment">// 开始处理任务</span></span><br><span class="line">    requestWork(root, rootExpirationTime);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// nestedUpdateCount初始值为0，在commit阶段会检查是否这是一个嵌套的更新，如果下一个根之前是一模一样的根，它就是一个嵌套更新，为了防止无限循环就会进行自增，一旦达到50次（NESTED_UPDATE_LIMIT）</span></span><br><span class="line">  <span class="keyword">if</span> (nestedUpdateCount &gt; NESTED_UPDATE_LIMIT) &#123;</span><br><span class="line">    <span class="comment">// 重置nestedUpdateCount变量，后续不更新</span></span><br><span class="line">    nestedUpdateCount = <span class="number">0</span>;</span><br><span class="line">    invariant(<span class="literal">false</span>, <span class="string">'Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在看下任务处理</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">requestWork</span>(<span class="params">root, expirationTime</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//  把 root 加入到调度队列，不会存在两个相同的 root 前后出现在队列中</span></span><br><span class="line">  addRootToSchedule(root, expirationTime);</span><br><span class="line">  <span class="keyword">if</span> (isRendering) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 这里涉及到事件系统，后续再进行写作分析</span></span><br><span class="line">  <span class="keyword">if</span> (isBatchingUpdates) &#123;</span><br><span class="line">    <span class="keyword">if</span> (isUnbatchingUpdates) &#123;</span><br><span class="line">      nextFlushedRoot = root;</span><br><span class="line">      nextFlushedExpirationTime = Sync;</span><br><span class="line">      performWorkOnRoot(root, Sync, <span class="literal">false</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 根据 expirationTime 来执行同步还是异步任务，最终都会调用 performSyncWork</span></span><br><span class="line">  <span class="keyword">if</span> (expirationTime === Sync) &#123;</span><br><span class="line">    performSyncWork();</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    scheduleCallbackWithExpirationTime(root, expirationTime);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>仔细往里面看，会发现同步任务 <code>performSyncWork</code> 和异步任务<code>scheduleCallbackWithExpirationTime</code> 最终都会调用 <code>performSyncWork</code> 方法。</p>
+<p>同步异步的处理都在 <code>performWorkOnRoot</code> 里进行，如果有上次遗留的任务，会直接调用<code>completeRoot</code> 进到提交阶段。如果没有就调 <code>renderRoot</code>开始渲染阶段。<br>异步任务主要是渲染的时候判断一下时间，如果没时间了，先把 <code>finishedWork</code> 赋给全局，下次循环处理。</p>
+<p>我们先沿着提交阶段的线索 <code>completeRoot</code> 往下看<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">completeRoot</span>(<span class="params">root, finishedWork, expirationTime</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// 检查是否有一批这个过期时间相匹配。</span></span><br><span class="line">  <span class="keyword">var</span> firstBatch = root.firstBatch;</span><br><span class="line">  <span class="keyword">if</span> (firstBatch !== <span class="literal">null</span> &amp;&amp; firstBatch._expirationTime &gt;= expirationTime) &#123;</span><br><span class="line">    <span class="keyword">if</span> (completedBatches === <span class="literal">null</span>) &#123;</span><br><span class="line">      completedBatches = [firstBatch];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      completedBatches.push(firstBatch);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (firstBatch._defer) &#123;</span><br><span class="line">      <span class="comment">// 满足这个条件的这批根无法提交，直到收到新的更新</span></span><br><span class="line">      root.finishedWork = finishedWork;</span><br><span class="line">      root.expirationTime = NoWork;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 提交根.</span></span><br><span class="line">  root.finishedWork = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 检查是否这是一个嵌套的更新(同步更新计划中提交阶段)</span></span><br><span class="line">  <span class="keyword">if</span> (root === lastCommittedRootDuringThisBatch) &#123;</span><br><span class="line">    <span class="comment">// 如果下一根之前一样的根,这是一个嵌套的更新。为了防止无限循环,增加嵌套的更新计数。</span></span><br><span class="line">    nestedUpdateCount++;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// 重置根开关</span></span><br><span class="line">    lastCommittedRootDuringThisBatch = root;</span><br><span class="line">    nestedUpdateCount = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  unstable_runWithPriority(unstable_ImmediatePriority, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    commitRoot(root, finishedWork);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最终会更新 <code>expirationTime</code> 值和重置 <code>finishedWork</code> 为 <code>null</code>。</p>
+<p>而 <code>renderRoot</code> 则是开始渲染阶段了，里面有个 <code>workLoop</code> 循环机制不管是同步任务还是异步任务都要进行 <code>performUnitOfWork</code> 通过 <code>beginWork</code> 进行各项子节点的调和更新，直到完成工作进行 <code>createInstance</code>，创建 DOM 元素并添加至文档，最后通过 <code>onComplete</code> 更新 <code>root</code> 节点的 <code>pendingCommitExpirationTime</code> 为当前的过期时间 <code>expirationTime</code> 值和 <code>finishedWork</code> 的值。想要挖掘 <code>beginWork</code> 里的具体调和更新细节有兴趣的同学可以再钻研进去看看。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createInstance</span>(<span class="params">type, props, rootContainerInstance, hostContext, internalInstanceHandle</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> parentNamespace = <span class="keyword">void</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 真实创建dom</span></span><br><span class="line">  <span class="keyword">var</span> domElement = createElement(type, props, rootContainerInstance, parentNamespace);</span><br><span class="line">  precacheFiberNode(internalInstanceHandle, domElement);</span><br><span class="line">  updateFiberProps(domElement, props);</span><br><span class="line">  <span class="keyword">return</span> domElement;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>precacheFiberNode</code> 个人认为是新建了一个 <code>new FiberNode()</code> 的实例，而<code>updateFiberProps</code> 方法是将真实 dom 和 fiber，props关联在一起了，互相引用。</p>
+<p>看到这里终于知道16+的 React 是在 createInstance 开始创建 dom 实例的，也就是之前所说的组件挂载就是在这里准备开始执行的。</p>
+<p>最后我们再总结下：</p>
+<p><img src="/assets/react-20.png" alt=""></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/06/react服务端渲染/" class="archive-article-date">
-  	<time datetime="2018-10-06T02:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/06/react服务端渲染/">react服务端渲染</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -318,57 +253,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/08/26/React-任务调度/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/React虚拟DOM和Diff算法/" class="archive-article-date">
-  	<time datetime="2018-08-06T13:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/React虚拟DOM和Diff算法/">React虚拟DOM和Diff算法</a>
-    </h1>
+    <a href="/2019/09/07/React-理解setState/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          React-理解setState
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/19/React-组件的实现与挂载/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React-组件的初始化与挂载</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -391,9 +366,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

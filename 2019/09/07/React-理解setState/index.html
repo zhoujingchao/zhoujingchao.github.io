@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Tag: react | zhoujingchao.github.io</title>
+  <title>React-理解setState | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/tags/react/index.html">
+  <meta name="description" content="面试官：“react中setState是同步的还是异步？”我：“异步的，setState不能立马拿到结果。”面试官：“那什么场景下是异步的，可不可能是同步，什么场景下又是同步的？”我：“……”">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-理解setState">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/09/07/React-理解setState/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="面试官：“react中setState是同步的还是异步？”我：“异步的，setState不能立马拿到结果。”面试官：“那什么场景下是异步的，可不可能是同步，什么场景下又是同步的？”我：“……”">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/setState-1.jpg">
+<meta property="og:updated_time" content="2020-01-07T09:33:04.332Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="React-理解setState">
+<meta name="twitter:description" content="面试官：“react中setState是同步的还是异步？”我：“异步的，setState不能立马拿到结果。”面试官：“那什么场景下是异步的，可不可能是同步，什么场景下又是同步的？”我：“……”">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/setState-1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,160 +156,95 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-React-理解setState" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
   
+    <h1 class="article-title" itemprop="name">
+      React-理解setState
+    </h1>
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/React-理解setState/" class="archive-article-date">
+
+        
+        <a href="/2019/09/07/React-理解setState/" class="archive-article-date">
   	<time datetime="2019-09-07T03:18:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/React-理解setState/">React-理解setState</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+        
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/React-任务调度/" class="archive-article-date">
-  	<time datetime="2019-08-26T09:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/React-任务调度/">React-任务调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/19/React-组件的实现与挂载/" class="archive-article-date">
-  	<time datetime="2019-08-19T08:03:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/19/React-组件的实现与挂载/">React-组件的初始化与挂载</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+    <div class="article-entry" itemprop="articleBody">
       
-        </div></section>
+        <blockquote>
+<p>面试官：“react中setState是同步的还是异步？”<br>我：“异步的，setState不能立马拿到结果。”<br>面试官：“那什么场景下是异步的，可不可能是同步，什么场景下又是同步的？”<br>我：“……”</p>
+</blockquote>
+<a id="more"></a>
+<h3 id="合成事件的setState"><a href="#合成事件的setState" class="headerlink" title="合成事件的setState"></a>合成事件的setState</h3><p>合成事件：react为了解决跨平台，兼容性问题，自己封装了一套事件机制，代理了原生的事件，像在jsx中常见的onClick、onChange等等都是合成事件。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line">  increment = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="comment">// 输出的是更新前的val --&gt; 0</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div onClick=&#123;<span class="keyword">this</span>.increment&#125;&gt;</span><br><span class="line">        &#123;<span class="string">`Counter is: <span class="subst">$&#123;<span class="keyword">this</span>.state.val&#125;</span>`</span>&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>上图的操作，我们平常写react真的可以说是非常非常的频繁了，让我们来捋捋发生点击事件后react内部做了什么？你可以打断点 increment 看调用栈，也可以去看源码。我就不写的很具体了，可以粗略的概括如下：</p>
+<p><img src="/assets/setState-1.jpg" alt=""></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">interactiveUpdates$1</span>(<span class="params">fn, a, b</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// If there are any pending interactive updates, synchronously flush them.</span></span><br><span class="line">  <span class="comment">// This needs to happen before we read any handlers, because the effect of</span></span><br><span class="line">  <span class="comment">// the previous event may influence which handlers are called during</span></span><br><span class="line">  <span class="comment">// this event.</span></span><br><span class="line">  <span class="keyword">if</span> (!isBatchingUpdates &amp;&amp; !isRendering &amp;&amp; lowestPriorityPendingInteractiveExpirationTime !== NoWork) &#123;</span><br><span class="line">    <span class="comment">// Synchronously flush pending interactive updates.</span></span><br><span class="line">    performWork(lowestPriorityPendingInteractiveExpirationTime, <span class="literal">false</span>);</span><br><span class="line">    lowestPriorityPendingInteractiveExpirationTime = NoWork;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> previousIsBatchingUpdates = isBatchingUpdates;</span><br><span class="line">  isBatchingUpdates = <span class="literal">true</span>;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> scheduler.unstable_runWithPriority(scheduler.unstable_UserBlockingPriority, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> fn(a, b);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    isBatchingUpdates = previousIsBatchingUpdates;</span><br><span class="line">    <span class="keyword">if</span> (!isBatchingUpdates &amp;&amp; !isRendering) &#123;</span><br><span class="line">      performSyncWork();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>performWork 后面做了啥想要进一步了解的同学，可以看一下之前的文章 <a href="https://zhoujingchao.github.io/2019/08/26/React%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90-%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6%EF%BC%88%E4%BA%8C%EF%BC%89/" target="_blank" rel="noopener">任务调度</a> 最后的总结图。</p>
+<p>合成事件中，isRendering，isBatchingUpdates，isUnbatchingUpdates，三个值初始值是false<br>, false, true。interactiveUpdates$1 里将 isBatchingUpdates 置为true，导致后面的 requestWork 函数被直接 return，所以当你在 increment 中调用 setState 之后去console.log的时候，是属于 try 代码块中的执行，但是由于是合成事件，try 代码块执行完 state 并没有更新，所以你输入的结果是更新前的 state 值，这就导致了所谓的”异步”，但是当你的 try 代码块执行完的时候（也就是你的increment合成事件），这个时候会去执行 finally 里的代码，在 finally 中执行了 performSyncWork 方法，到这个时候才会去更新 state 并且渲染到UI上。</p>
+<h3 id="生命周期函数中的setState"><a href="#生命周期函数中的setState" class="headerlink" title="生命周期函数中的setState"></a>生命周期函数中的setState</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="comment">// 输出的还是更新前的值 --&gt; 0</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="string">`Counter is: <span class="subst">$&#123;<span class="keyword">this</span>.state.val&#125;</span>`</span>&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>它在 requestWork 中，isRendering 为true，就会被返回，所以后面会执行完 componentDidMount 函数，再去执行后面的更新逻辑，所以此生命周期里它的 state 值也是之前的值。</p>
+<h3 id="原生事件中的setState"><a href="#原生事件中的setState" class="headerlink" title="原生事件中的setState"></a>原生事件中的setState</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line">  changeValue = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="comment">// 输出的是更新后的值 --&gt; 1</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line">  &#125;</span><br><span class="line"> componentDidMount() &#123;</span><br><span class="line">    <span class="built_in">document</span>.body.addEventListener(<span class="string">'click'</span>, <span class="keyword">this</span>.changeValue, <span class="literal">false</span>)</span><br><span class="line"> &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="string">`Counter is: <span class="subst">$&#123;<span class="keyword">this</span>.state.val&#125;</span>`</span>&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>调用栈除了把合成事件的处理逻辑去掉，后面都是一样的，所以不会把 isBatchingUpdates 置为true，函数不会被 return，它会正常往下走去进行视图更新，所以它打印 state 的时候是更新过后的值。</p>
+<h3 id="setTimeout中的setState"><a href="#setTimeout中的setState" class="headerlink" title="setTimeout中的setState"></a>setTimeout中的setState</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">      <span class="comment">// 输出更新后的值 --&gt; 1</span></span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;<span class="string">`Counter is: <span class="subst">$&#123;<span class="keyword">this</span>.state.val&#125;</span>`</span>&#125;</span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>在 setTimeout 中去 setState 并不算是一个单独的场景，你可以在原生事件中，合成事件中，钩子函数中等都可以 setTimeout，但是不管哪个场景下，它基于 <a href="https://zhoujingchao.github.io/2018/06/28/JS%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/" target="_blank" rel="noopener">event loop</a> 机制下都可以拿到最新的 state。</p>
+<p>在 try 代码块中执行逻辑，遇到 setTimeout，把它丢进队列里，并没有去执行，而是先执行 finally 代码块，等 finally 执行完了，isBatchingUpdates 又变为了 false ，导致最后去执行队列里的 setState 时候， requestWork 走的是和原生事件一样的 expirationTime === Sync if分支，所以表现就会和原生事件一样，可以同步拿到最新的 state 值。</p>
+<h3 id="setState中的批量更新"><a href="#setState中的批量更新" class="headerlink" title="setState中的批量更新"></a>setState中的批量更新</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line">  batchUpdates = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">  &#125;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div onClick=&#123;<span class="keyword">this</span>.batchUpdates&#125;&gt;</span><br><span class="line">        &#123;<span class="string">`Counter is <span class="subst">$&#123;<span class="keyword">this</span>.state.val&#125;</span>`</span>&#125; <span class="comment">// 1</span></span><br><span class="line">      &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>到目前为止，在最终的 performWork 中，相同的 key 会被覆盖，不同的 key 会被合并，是浅拷贝，最终只会对最后一次的 setState 进行更新。<br>但是在 React v17或更高版本的以后，会取消掉 unstable_batchedUpdates() 这个不稳定的API，让 React 中的所有 setState 按照顺序依次更新。</p>
+<h3 id="经典的例子🌰"><a href="#经典的例子🌰" class="headerlink" title="经典的例子🌰"></a>经典的例子🌰</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</span><br><span class="line">  state = &#123; <span class="attr">val</span>: <span class="number">0</span> &#125;</span><br><span class="line"></span><br><span class="line">  componentDidMount() &#123;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line"></span><br><span class="line">    setTimeout(<span class="function"><span class="params">_</span> =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val);</span><br><span class="line"></span><br><span class="line">      <span class="keyword">this</span>.setState(&#123; <span class="attr">val</span>: <span class="keyword">this</span>.state.val + <span class="number">1</span> &#125;)</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>.state.val)</span><br><span class="line">    &#125;, <span class="number">0</span>)</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> &lt;div&gt;&#123;this.state.val&#125;&lt;/div&gt;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>综合上述特性分析，所以输出结果为0，0，2，3</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
+<li><p>setState 只在合成事件和钩子函数中是“异步”的，在原生事件和 setTimeout 中都是同步的。</p>
+</li>
+<li><p>setState 的“异步”并不是内部异步代码实现的，其本身执行过程和代码是同步的，只是合成事件和钩子函数的调用顺序在更新之前，导致这两个场景下没法立马拿到更新后的值，形成了所谓的“异步”，但是我们还是可以通过 setState 的第二个参数，callback函数去拿到更新后的值的。</p>
+</li>
+<li><p>setTimeout 的批量更新优化机制是建立在“异步”（合成事件，钩子函数）之上的，在原生事件和 setTimeout 中不会批量更新。在“异步”中，如果是对同一个 key 值进行多次 setState，批量更新策略会对其进行覆盖，只对最后一次 setState 进行更新。如果同时 setState 多个不同的 key 值，会先进行合并操作，再在最后一个 setState 进行更新。</p>
+</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/06/react服务端渲染/" class="archive-article-date">
-  	<time datetime="2018-10-06T02:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/06/react服务端渲染/">react服务端渲染</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -318,57 +256,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/09/07/React-理解setState/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/React虚拟DOM和Diff算法/" class="archive-article-date">
-  	<time datetime="2018-08-06T13:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/React虚拟DOM和Diff算法/">React虚拟DOM和Diff算法</a>
-    </h1>
+    <a href="/2020/01/02/深入浅出TCP协议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          深入浅出TCP协议
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/26/React-任务调度/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">React-任务调度</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -391,9 +369,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",

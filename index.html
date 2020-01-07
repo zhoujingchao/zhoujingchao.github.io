@@ -222,32 +222,31 @@
 
 
   
-    <article id="post-React源码解析-任务调度（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-React-理解setState" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/26/React源码解析-任务调度（二）/">React源码解析-任务调度（二）</a>
+      <a class="article-title" href="/2019/09/07/React-理解setState/">React-理解setState</a>
     </h1>
   
 
         
-        <a href="/2019/08/26/React源码解析-任务调度（二）/" class="archive-article-date">
-  	<time datetime="2019-08-26T09:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
+        <a href="/2019/09/07/React-理解setState/" class="archive-article-date">
+  	<time datetime="2019-09-07T03:18:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。</p>
-<h3 id="Reconciler"><a href="#Reconciler" class="headerlink" title="Reconciler"></a>Reconciler</h3><p>在16+的React版本 <a href="https://github.com/acdlite/react-fiber-architecture" target="_blank" rel="noopener">Fiber Reconciler（调和器）
-</a> 推出之前，React 用的是 <a href="https://reactjs.org/docs/implementation-notes.html" target="_blank" rel="noopener">Stack Reconciler</a>，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，假如交互反馈延迟稍微大一丢丢，就会有明显的卡顿，这是影响体验的。</p>
-<p>而 Fiber 就是为了解决上面的问题而诞生的，它把渲染或者更新过程拆分成一系列小任务，做完看是否有时间继续下一个任务，有的话继续，没有则自己挂起，主线程优先做更高优先级的任务，待到主线程不忙的时候再继续不太紧急的任务。这一切的实现是在代码层引入了新的数据结构对象 Fiber ，每一个组件实例都对应一个fiber实例，fiber实例负责管理组件实例的更新，渲染以及与其他fiber实例的联系。</p>
+        <blockquote>
+<p>面试官：“react中setState是同步的还是异步？”<br>我：“异步的，setState不能立马拿到结果。”<br>面试官：“那什么场景下是异步的，可不可能是同步，什么场景下又是同步的？”<br>我：“……”</p>
+</blockquote>
         
-          <a class="article-more-a" href="/2019/08/26/React源码解析-任务调度（二）/#more">more >></a>
+          <a class="article-more-a" href="/2019/09/07/React-理解setState/#more">more >></a>
         
       
 
@@ -271,7 +270,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/26/React源码解析-任务调度（二）/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/09/07/React-理解setState/">展开全文 >></a>
         </p>
       
 
@@ -289,29 +288,32 @@
 
 
   
-    <article id="post-React源码解析-组件的实现与挂载（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-React-任务调度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/19/React源码解析-组件的实现与挂载（一）/">React源码解析-组件的初始化与挂载（一）</a>
+      <a class="article-title" href="/2019/08/26/React-任务调度/">React-任务调度</a>
     </h1>
   
 
         
-        <a href="/2019/08/19/React源码解析-组件的实现与挂载（一）/" class="archive-article-date">
-  	<time datetime="2019-08-19T08:03:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+        <a href="/2019/08/26/React-任务调度/" class="archive-article-date">
+  	<time datetime="2019-08-26T09:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。</p>
+        <p>上篇分析了组件的初始化，原本想把挂载方式也一块解析下，发现这挂载嵌在了任务调度的最后一个环节，而这任务调度实属复杂，本篇就浅析一下这个任务调度。</p>
+<h3 id="Reconciler"><a href="#Reconciler" class="headerlink" title="Reconciler"></a>Reconciler</h3><p>在16+的React版本 <a href="https://github.com/acdlite/react-fiber-architecture" target="_blank" rel="noopener">Fiber Reconciler（调和器）
+</a> 推出之前，React 用的是 <a href="https://reactjs.org/docs/implementation-notes.html" target="_blank" rel="noopener">Stack Reconciler</a>，它是自顶向下递归渲染及更新的，持续占用主线程并且是无法中断的，主线程上的布局、动画等周期性任务以及交互响应就无法立即得到处理，假如交互反馈延迟稍微大一丢丢，就会有明显的卡顿，这是影响体验的。</p>
+<p>而 Fiber 就是为了解决上面的问题而诞生的，它把渲染或者更新过程拆分成一系列小任务，做完看是否有时间继续下一个任务，有的话继续，没有则自己挂起，主线程优先做更高优先级的任务，待到主线程不忙的时候再继续不太紧急的任务。这一切的实现是在代码层引入了新的数据结构对象 Fiber ，每一个组件实例都对应一个fiber实例，fiber实例负责管理组件实例的更新，渲染以及与其他fiber实例的联系。</p>
         
-          <a class="article-more-a" href="/2019/08/19/React源码解析-组件的实现与挂载（一）/#more">more >></a>
+          <a class="article-more-a" href="/2019/08/26/React-任务调度/#more">more >></a>
         
       
 
@@ -335,7 +337,71 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/08/19/React源码解析-组件的实现与挂载（一）/">展开全文 >></a>
+          <a class="article-more-a" href="/2019/08/26/React-任务调度/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-React-组件的实现与挂载" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/08/19/React-组件的实现与挂载/">React-组件的初始化与挂载</a>
+    </h1>
+  
+
+        
+        <a href="/2019/08/19/React-组件的实现与挂载/" class="archive-article-date">
+  	<time datetime="2019-08-19T08:03:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。</p>
+        
+          <a class="article-more-a" href="/2019/08/19/React-组件的实现与挂载/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/08/19/React-组件的实现与挂载/">展开全文 >></a>
         </p>
       
 
@@ -735,61 +801,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-Koa2中间件原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/11/28/Koa2中间件原理/">Koa2中间件原理</a>
-    </h1>
-  
-
-        
-        <a href="/2018/11/28/Koa2中间件原理/" class="archive-article-date">
-  	<time datetime="2018-11-28T08:04:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近一直在用koa，就很好奇koa的中间件是如何实现的，多个中间件之间的关系和执行顺序又是怎样的？下面我们一起来看看吧。</p>
-<h2 id="举个-🌰"><a href="#举个-🌰" class="headerlink" title="举个 🌰"></a>举个 🌰</h2><p><img src="/assets/例子.png" style="width:50%;height:50%;"></p>
-<p>输出就不写了，还不清楚的同学自行尝试下</p>
-        
-          <a class="article-more-a" href="/2018/11/28/Koa2中间件原理/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/11/28/Koa2中间件原理/">展开全文 >></a>
         </p>
       
 
@@ -2633,15 +2644,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2649,11 +2652,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color3">杂谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2661,7 +2668,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">安全</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浏览器</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2670,10 +2685,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>

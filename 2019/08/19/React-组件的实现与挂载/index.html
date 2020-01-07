@@ -6,18 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="//zhoujingchao.github.io">
-  <title>Tag: react | zhoujingchao.github.io</title>
+  <title>React-组件的初始化与挂载 | zhoujingchao.github.io</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
-<meta name="keywords" content="前端">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhoujingchao.github.io">
-<meta property="og:url" content="//zhoujingchao.github.io/tags/react/index.html">
+  <meta name="description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React-组件的初始化与挂载">
+<meta property="og:url" content="//zhoujingchao.github.io/2019/08/19/React-组件的实现与挂载/index.html">
 <meta property="og:site_name" content="zhoujingchao.github.io">
-<meta property="og:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta property="og:description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/app.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/app-2.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/component.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/component-2.png">
+<meta property="og:image" content="//zhoujingchao.github.io/assets/component-3.png">
+<meta property="og:updated_time" content="2020-01-07T03:16:41.613Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhoujingchao.github.io">
-<meta name="twitter:description" content="成都大学2012级，一枚爱技术爱健身爱篮球的前端攻城狮">
+<meta name="twitter:title" content="React-组件的初始化与挂载">
+<meta name="twitter:description" content="React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。">
+<meta name="twitter:image" content="//zhoujingchao.github.io/assets/app.png">
   
     <link rel="alternative" href="/atom.xml" title="zhoujingchao.github.io" type="application/atom+xml">
   
@@ -153,112 +160,127 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-React-组件的实现与挂载" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/09/07/React-理解setState/" class="archive-article-date">
-  	<time datetime="2019-09-07T03:18:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/09/07/React-理解setState/">React-理解setState</a>
+    <h1 class="article-title" itemprop="name">
+      React-组件的初始化与挂载
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/26/React-任务调度/" class="archive-article-date">
-  	<time datetime="2019-08-26T09:26:41.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-26</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/26/React-任务调度/">React-任务调度</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2019/08/19/React-组件的实现与挂载/" class="archive-article-date">
+        
+        <a href="/2019/08/19/React-组件的实现与挂载/" class="archive-article-date">
   	<time datetime="2019-08-19T08:03:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-08-19</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2019/08/19/React-组件的实现与挂载/">React-组件的初始化与挂载</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>React 是笔者的主要技术栈之一，难免想探索一下内部的一些机制实现，笔者会从组件的初始化与挂载、任务调度、组件类型和生命周期、事务、事件、hook等方向进行学习解析，也是第一次进行源码解析的写作，如有欠妥之处，欢迎朋友们不吝指正和讨论，共同学习进步。</p>
+<a id="more"></a>
+<p>下面，我们先来看看 React 组件的初始化</p>
+<h2 id="一、组件是什么"><a href="#一、组件是什么" class="headerlink" title="一、组件是什么"></a>一、组件是什么</h2><p>首先编写一个最简单的组件</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; Component &#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">  render() &#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      &lt;div&gt;This is Component App&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">    );</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">console.log(&lt;App /</span>&gt;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+<p>这段代码我们实现了 <code>&lt;App /&gt;</code> 组件，我们打印出来看看是个啥：</p>
+<p><img src="/assets/app.png" alt=""></p>
+<p>可以看出，<code>&lt;App /&gt;</code> 其实是js对象不是真实的DOM，注意此时的 <code>props</code> 是空对象，接下来我们打印 <code>&lt;App&gt;&lt;div&gt;This is Component App&lt;/div&gt;&lt;/App&gt;</code>:</p>
+<p><img src="/assets/app-2.png" alt=""></p>
+<p>我们看到，<code>props</code> 发生了变化，由于 <code>&lt;App /&gt;</code> 组件中嵌套了一个 <code>div</code>，<code>div</code> 中又嵌套了文字，所以在描述 <code>&lt;App /&gt;</code> 对象的 <code>props</code> 中增加了 <code>children</code> 属性，其值为描述 <code>div</code> 的js对象。同理，如果我们进行多层的组件嵌套，其实就是在父对象的 <code>props</code> 中增加 <code>children</code> 字段及对应的描述值，也就是js对象的多层嵌套。</p>
+<p>那么展现在我们眼前的html标签，实际上却是对象的React组件是如何实现的呢？</p>
+<p>我们从代码的组件声明为源头进行探索，所以我们打开react内umd规范下的 <code>react.development.js</code>，看到如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> React = &#123;</span><br><span class="line">  Children: &#123;</span><br><span class="line">    map: mapChildren,</span><br><span class="line">    forEach: forEachChildren,</span><br><span class="line">    count: countChildren,</span><br><span class="line">    toArray: toArray,</span><br><span class="line">    only: onlyChild</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  createRef: createRef,</span><br><span class="line">  Component: Component,</span><br><span class="line">  PureComponent: PureComponent,</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们在 <code>import React, { Component } from &#39;react&#39;</code> 时，引入的就是源码中提供的 <code>React</code> 对象。在 <code>extends Component</code> 时，继承了 <code>Component</code> 类。因为 <code>Component</code> 是 <code>React.Component</code> 的引用。也就是说 <code>Component === React.Component</code>，在实际项目中都可以写。</p>
+<p>沿着 <code>Component</code> 线索我们继续在这个文件里搜寻一下它的踪迹：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Component</span>(<span class="params">props, context, updater</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.props = props;</span><br><span class="line">  <span class="keyword">this</span>.context = context;</span><br><span class="line">  <span class="keyword">this</span>.refs = emptyObject;</span><br><span class="line">  <span class="keyword">this</span>.updater = updater || ReactNoopUpdateQueue;</span><br><span class="line">&#125;</span><br><span class="line">Component.prototype.isReactComponent = &#123;&#125;;</span><br><span class="line">Component.prototype.setState = <span class="function"><span class="keyword">function</span> (<span class="params">partialState, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br><span class="line">Component.prototype.forceUpdate = <span class="function"><span class="keyword">function</span> (<span class="params">callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上述代码大家再熟悉不过了。同时我们也发现 <code>setState</code> 是定义在原型上具有两个参数的方法，具体原理我们将在后续的篇章进行解析。</p>
+<p>上述代码表明，我们在最开始声明的组件App，其实是继承 <code>Component</code>类，它的原型具有 <code>setState</code> 等方法。这样组件App已经有了最基本的雏形。</p>
+<p><img src="/assets/component.png" alt=""></p>
+<h2 id="二、组件的初始化"><a href="#二、组件的初始化" class="headerlink" title="二、组件的初始化"></a>二、组件的初始化</h2><p>声明App后，我们可以在其内部自定义方法，也可以使用生命周期的方法，这些和我们在写”类”的时候是完全一样的。唯一不同的是组件类必须拥有 <code>render</code> 方法输出类似 <code>&lt;div&gt;This is Component App&lt;/div&gt;</code>的结构并挂载到真实DOM上，才能触发组件的生命周期并成为DOM树的一部分。首先我们观察ES6的”类”是如何初始化一个react组件的。</p>
+<p>将最初的代码放入 <a href="https://babeljs.io/repl#?babili=false&amp;browsers=&amp;build=&amp;builtIns=false&amp;spec=false&amp;loose=false&amp;code_lz=JYWwDg9gTgLgBAJQKYEMDGMA0cDecDCE4EAdkifAL5wBmURcA5FKhowNwBQnSAHpLDgATJDRQBXADbw0klAGd5cAIJgwcPjHJClhYmQq5OcOCxIioACgCURkyZYxxUEnEvH7JgDxDgANwA-ABUAC2AlcIIiSAN4VTAvAHpfQI8Tay4TSk5soA&amp;debug=false&amp;forceAllTransforms=false&amp;shippedProposals=false&amp;circleciRepo=&amp;evaluate=false&amp;fileSize=false&amp;timeTravel=false&amp;sourceType=module&amp;lineWrap=true&amp;presets=es2015%2Creact%2Cstage-2&amp;prettier=false&amp;targets=&amp;version=7.5.5&amp;externalPlugins=" target="_blank" rel="noopener">babel</a> 中<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App =</span><br><span class="line"><span class="function"><span class="keyword">function</span> (<span class="params">_Component</span>) </span>&#123;</span><br><span class="line">  _inherits(App, _Component);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    _classCallCheck(<span class="keyword">this</span>, App);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> _possibleConstructorReturn(<span class="keyword">this</span>, _getPrototypeOf(App).apply(<span class="keyword">this</span>, <span class="built_in">arguments</span>));</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  _createClass(App, [&#123;</span><br><span class="line">    key: <span class="string">"render"</span>,</span><br><span class="line">    value: <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> _react.default.createElement(<span class="string">"div"</span>, <span class="literal">null</span>, <span class="string">"This is Component App"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> App;</span><br><span class="line">&#125;(_react.Component);</span><br><span class="line"></span><br><span class="line">exports.default = App;</span><br></pre></td></tr></table></figure></p>
+<p>其中 <code>_Component</code> 是对象 <code>Component</code>，<code>_inherit</code> 方法是 <code>extends</code> 关键字的函数实现，这些都是ES6相关内容，我们暂时不管。关键在于我们发现 <code>render</code> 方法实际上是调用了 <code>_react.default.createElement</code> 方法。然后我们继续在我们的源码文件中搜寻 <code>createElement</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createElement</span>(<span class="params">type, config, children</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> propName = <span class="keyword">void</span> <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> props = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> key = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> ref = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="literal">null</span>;</span><br><span class="line">  <span class="keyword">var</span> source = <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>接着搜寻 <code>ReactElement</code>:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ReactElement = <span class="function"><span class="keyword">function</span> (<span class="params">type, key, ref, self, source, owner, props</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> element = &#123;</span><br><span class="line">    $$<span class="keyword">typeof</span>: REACT_ELEMENT_TYPE,</span><br><span class="line"></span><br><span class="line">    type: type,</span><br><span class="line">    key: key,</span><br><span class="line">    ref: ref,</span><br><span class="line">    props: props,</span><br><span class="line"></span><br><span class="line">    _owner: owner</span><br><span class="line">  &#125;;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> element;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>看到这里我们发现，每一个组件对象都是通过 <code>ReactElement</code> 方法创建出来的对象。换句话说，<code>ReactElment</code> 是一种内部记录组件特征的对象。<br>在 <code>ReactElement</code> 中:</p>
+<ol>
+<li>$$typeof: <a href="https://github.com/facebook/react/pull/4832" target="_blank" rel="noopener">使用符号标记每个ReactElement</a></li>
+<li>type: 用于判断如何创建节点</li>
+<li>key: DOM结构标识，提升update性能</li>
+<li>ref: 真实DOM的</li>
+<li>props: 子结构相关信息(有则增加children字段/没有为空)和组件属性(如style等等)</li>
+<li>_owner: _owner === ReactCurrentOwner.current, 值为创建当前组件的对象，默认值为null</li>
+</ol>
+<p>总的来说，<code>ReactElement</code> 就是一个用来承载信息的容器，对于后期构建应用的树结构是非常重要的。</p>
+<p><img src="/assets/component-2.png" alt=""></p>
+<h2 id="二、组件的挂载"><a href="#二、组件的挂载" class="headerlink" title="二、组件的挂载"></a>二、组件的挂载</h2><p>我们知道可以通过 <code>ReactDOM.render(component, mountNode)</code>的形式对自定义组件/原生DOM/字符串进行挂载。</p>
+<p>我们看下源码实现，找到react-dom内umd规范下的 <code>react-dom.development.js</code>，找到 <code>render</code> 方法看一下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">element, container, callback</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">    <span class="keyword">return</span> legacyRenderSubtreeIntoContainer(<span class="literal">null</span>, element, container, <span class="literal">false</span>, callback);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">legacyRenderSubtreeIntoContainer</span>(<span class="params">parentComponent, children, container, forceHydrate, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">   <span class="keyword">var</span> root = container._reactRootContainer;</span><br><span class="line">  <span class="keyword">if</span> (!root) &#123;</span><br><span class="line">    <span class="comment">// Initial mount</span></span><br><span class="line">    root = container._reactRootContainer = legacyCreateRootFromDOMContainer(container, forceHydrate);</span><br><span class="line">    <span class="keyword">if</span> (<span class="keyword">typeof</span> callback === <span class="string">'function'</span>) &#123;</span><br><span class="line">      <span class="keyword">var</span> originalCallback = callback;</span><br><span class="line">      callback = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> instance = getPublicRootInstance(root._internalRoot);</span><br><span class="line">        originalCallback.call(instance);</span><br><span class="line">      &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// Initial mount should not be batched.</span></span><br><span class="line">    unbatchedUpdates(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (parentComponent != <span class="literal">null</span>) &#123;</span><br><span class="line">        root.legacy_renderSubtreeIntoContainer(parentComponent, children, callback);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        root.render(children, callback);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> getPublicRootInstance(root._internalRoot);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为是首次渲染更新，所以 <code>root</code> 是 <code>null</code>，只需看 <code>!root</code> 的情况，它调用了 <code>legacyCreateRootFromDOMContainer</code>，我们接着往下看：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">legacyCreateRootFromDOMContainer</span>(<span class="params">container, forceHydrate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> shouldHydrate = forceHydrate || shouldHydrateDueToLegacyHeuristic(container);</span><br><span class="line">  <span class="comment">// First clear any existing content.</span></span><br><span class="line">  <span class="keyword">if</span> (!shouldHydrate) &#123;</span><br><span class="line">    <span class="keyword">var</span> warned = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">var</span> rootSibling = <span class="keyword">void</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (rootSibling = container.lastChild) &#123;</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="keyword">if</span> (!warned &amp;&amp; rootSibling.nodeType === ELEMENT_NODE &amp;&amp; rootSibling.hasAttribute(ROOT_ATTRIBUTE_NAME)) &#123;</span><br><span class="line">          warned = <span class="literal">true</span>;</span><br><span class="line">          warningWithoutStack$<span class="number">1</span>(<span class="literal">false</span>, <span class="string">'render(): Target node has markup rendered by React, but there '</span> + <span class="string">'are unrelated nodes as well. This is most commonly caused by '</span> + <span class="string">'white-space inserted around server-rendered markup.'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      container.removeChild(rootSibling);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="keyword">if</span> (shouldHydrate &amp;&amp; !forceHydrate &amp;&amp; !warnedAboutHydrateAPI) &#123;</span><br><span class="line">      warnedAboutHydrateAPI = <span class="literal">true</span>;</span><br><span class="line">      lowPriorityWarning$<span class="number">1</span>(<span class="literal">false</span>, <span class="string">'render(): Calling ReactDOM.render() to hydrate server-rendered markup '</span> + <span class="string">'will stop working in React v17. Replace the ReactDOM.render() call '</span> + <span class="string">'with ReactDOM.hydrate() if you want React to attach to the server HTML.'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Legacy roots are not async by default.</span></span><br><span class="line">  <span class="keyword">var</span> isConcurrent = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ReactRoot(container, isConcurrent, shouldHydrate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时 <code>forceHydrate</code> 是 <code>false</code>，所以看 <code>shouldHydrateDueToLegacyHeuristic(container)</code> 返回的是啥？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 判断是否为服务端渲染</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shouldHydrateDueToLegacyHeuristic</span>(<span class="params">container</span>) </span>&#123;</span><br><span class="line">  <span class="comment">//获取container的第一个节点（根节点），也就是 id='root' 的节点</span></span><br><span class="line">  <span class="keyword">var</span> rootElement = getReactRootElementInContainer(container);</span><br><span class="line">  <span class="keyword">return</span> !!(rootElement &amp;&amp;</span><br><span class="line">  rootElement.nodeType === ELEMENT_NODE &amp;&amp;</span><br><span class="line">  <span class="comment">// 判断是否是服务端渲染</span></span><br><span class="line">  rootElement.hasAttribute(ROOT_ATTRIBUTE_NAME));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ROOT_ATTRIBUTE_NAME = <span class="string">'data-reactroot'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getReactRootElementInContainer</span>(<span class="params">container</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (!container) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (container.nodeType === DOCUMENT_NODE) &#123;</span><br><span class="line">    <span class="keyword">return</span> container.documentElement;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> container.firstChild;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>container</code> 的首节点是没有 <code>data-reactroot</code> 属性的，所以会进行while循环，依次删除 <code>container</code> 的子节点，删除完毕后，<code>new</code> 一个 <code>ReactRoot</code> 的实例。所以说判断是否是服务端渲染的标志是：<br>在获取 <code>container</code> 中的第一个节点（或文档节点）后，看该节点是否有属性 <code>ROOT_ATTRIBUTE_NAME</code>。</p>
+<p>接着 <code>ReactRoot</code> 的线索往下看，通过 <code>createContainer</code> 去创建 <code>FiberRoot</code>, 这个 <code>FiberRoot</code> 对象在后期调度更新的过程中非常非常重要。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ReactRoot</span>(<span class="params">container, isConcurrent, hydrate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> root = createContainer(container, isConcurrent, hydrate);</span><br><span class="line">  <span class="keyword">this</span>._internalRoot = root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createContainer</span>(<span class="params">containerInfo, isConcurrent, hydrate</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> createFiberRoot(containerInfo, isConcurrent, hydrate);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ReactRoot.prototype.render = <span class="function"><span class="keyword">function</span> (<span class="params">children, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> root = <span class="keyword">this</span>._internalRoot;</span><br><span class="line">  <span class="keyword">var</span> work = <span class="keyword">new</span> ReactWork();</span><br><span class="line">  callback = callback === <span class="literal">undefined</span> ? <span class="literal">null</span> : callback;</span><br><span class="line">  &#123;</span><br><span class="line">    warnOnInvalidCallback(callback, <span class="string">'render'</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (callback !== <span class="literal">null</span>) &#123;</span><br><span class="line">    work.then(callback);</span><br><span class="line">  &#125;</span><br><span class="line">  updateContainer(children, root, <span class="literal">null</span>, work._onCommit);</span><br><span class="line">  <span class="keyword">return</span> work;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateContainer</span>(<span class="params">element, container, parentComponent, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> current$$<span class="number">1</span> = container.current;</span><br><span class="line">  <span class="comment">// 返回的时间是以下这种数据类型</span></span><br><span class="line">  <span class="comment">// 是以V8引擎上最大31位整数1073741823为根据的</span></span><br><span class="line">  <span class="comment">// 可以追溯这个requestCurrentTime函数，就能看见源码注释了</span></span><br><span class="line">  <span class="keyword">var</span> currentTime = requestCurrentTime();</span><br><span class="line">  <span class="comment">// 计算过期时间，这是React优先级更新非常重要的点</span></span><br><span class="line">  <span class="keyword">var</span> expirationTime = computeExpirationForFiber(currentTime, current$$<span class="number">1</span>);</span><br><span class="line">  <span class="keyword">return</span> updateContainerAtExpirationTime(element, container, parentComponent, expirationTime, callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们发现调用了 <code>updateContainer</code> 方法后，内部开始计算时间 <code>requestCurrentTime()</code>, <code>computeExpirationForFiber()</code>暂且先不管具体细节。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">updateContainerAtExpirationTime</span>(<span class="params">element, container, parentComponent, expirationTime, callback</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> current$$<span class="number">1</span> = container.current;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="keyword">return</span> scheduleRootUpdate(current$$<span class="number">1</span>, element, expirationTime, callback);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">scheduleRootUpdate</span>(<span class="params">current$$<span class="number">1</span>, element, expirationTime, callback</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 创建更新的时间节点</span></span><br><span class="line">  <span class="keyword">var</span> update = createUpdate(expirationTime);</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line"></span><br><span class="line">  flushPassiveEffects();</span><br><span class="line">  <span class="comment">// 整个React应用中，会有多次更新，而这多次更新都在这个更新队列中</span></span><br><span class="line">  enqueueUpdate(current$$<span class="number">1</span>, update);</span><br><span class="line">  <span class="comment">// 进行任务调度，当React进行Update后，就要进行调度</span></span><br><span class="line">  <span class="comment">// 即根据任务的优先级去调度任务，先执行优先级高的任务，</span></span><br><span class="line">  scheduleWork(current$$<span class="number">1</span>, expirationTime);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> expirationTime;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>enqueueUpdate()</code> 和 <code>scheduleWork()</code>，这个任务调度是最重要且最复杂的内容了，后续慢慢来解析。以上我们看见这个计划更新root的函数最终返回了一个 <code>expirationTime</code>, 就是说 <code>updateContainer()</code> 返回了 <code>expirationTime</code>。</p>
+<p>到这先告一段落了，我们接着回到 <code>legacyRenderSubtreeIntoContainer</code> 函数往下看<br>最终返回了 <code>getPublicRootInstance</code>：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getPublicRootInstance</span>(<span class="params">container</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> containerFiber = container.current;</span><br><span class="line">  <span class="keyword">if</span> (!containerFiber.child) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">switch</span> (containerFiber.child.tag) &#123;</span><br><span class="line">    <span class="keyword">case</span> HostComponent:</span><br><span class="line">      <span class="keyword">return</span> getPublicInstance(containerFiber.child.stateNode);</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      <span class="keyword">return</span> containerFiber.child.stateNode;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>React初始化的时候，<code>container.current</code> 是没有子节点的，所以返回 null。</p>
+<p>最后我们对之前的思维图再进行补充：</p>
+<p><img src="/assets/component-3.png" alt=""></p>
+<p>已经有点长了，暂时先解析到这里。组件是如何挂载到真正的DOM上以及它的任务调度又是如何，笔者在下一篇再来解析。</p>
 
-        <div class="article-info info-on-right">
-          
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我喝 ☕ <i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/weixinpay.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -270,105 +292,97 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <!-- <img src="http://s.jiathis.com/qrcode.php?url=http://zhoujingchao.github.io/2019/08/19/React-组件的实现与挂载/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/10/06/react服务端渲染/" class="archive-article-date">
-  	<time datetime="2018-10-06T02:23:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/10/06/react服务端渲染/">react服务端渲染</a>
-    </h1>
+    <a href="/2019/08/26/React-任务调度/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          React-任务调度
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/08/13/egg-rocketmq消息中间件/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">egg-rocketmq消息中间件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/08/06/React虚拟DOM和Diff算法/" class="archive-article-date">
-  	<time datetime="2018-08-06T13:58:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/08/06/React虚拟DOM和Diff算法/">React虚拟DOM和Diff算法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -391,9 +405,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
