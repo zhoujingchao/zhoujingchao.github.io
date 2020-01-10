@@ -155,6 +155,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-React-Hooks原理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/09/React-Hooks原理/">React-Hooks实现原理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/09/React-Hooks原理/" class="archive-article-date">
+  	<time datetime="2020-01-09T09:51:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Hooks推出已有一段时间，相信大家在尝试着摸索使用的过程中，难免遇到一些琢磨不透的问题，比如：</p>
+<ol>
+<li>为什么 useEffect 第二个参数是空数组时就当于 ComponentDidMount 的效果，只会执行一次？</li>
+<li>为什么只能在函数最外层调用 Hook，不能在循环、条件判断或者子函数中调用？</li>
+<li>自定义的 Hook 是如何影响自身并使用它的函数组件的？</li>
+<li>这个 effects 取的值怎么不是最新的？</li>
+<li>……</li>
+</ol>
+        
+          <a class="article-more-a" href="/2020/01/09/React-Hooks原理/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">react</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/09/React-Hooks原理/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-深入浅出TCP协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -736,71 +807,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-工厂模式（二）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-JS常用设计模式详解-es5与es6-构造函数模式（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/">JS常用设计模式详解[es5与es6]-构造函数模式（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/" class="archive-article-date">
-  	<time datetime="2018-12-17T06:32:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>js没有类的概念，通常认为构造函数是用来实现实例的，通过 new 关键字来调用构造函数创建一个新对象。构造函数内部的 this 引用的是新创建的对象。</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Player</span>(<span class="params">name, age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">this</span>.output = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.name + <span class="string">' is '</span> + <span class="keyword">this</span>.age + <span class="string">' years old'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> Irving = <span class="keyword">new</span> Player(<span class="string">'Irving'</span>, <span class="number">18</span>)</span><br><span class="line"><span class="keyword">var</span> Kobe = <span class="keyword">new</span> Player(<span class="string">'Kobe'</span>, <span class="number">18</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(Irving.output())</span><br><span class="line"><span class="built_in">console</span>.log(Kobe.output())</span><br></pre></td></tr></table></figure>
-        
-          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/12/17/JS常用设计模式详解-es5与es6-构造函数模式（一）/">展开全文 >></a>
         </p>
       
 
@@ -2640,11 +2646,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2656,11 +2662,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2676,15 +2682,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>

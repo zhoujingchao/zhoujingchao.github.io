@@ -155,6 +155,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-JS原型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/29/JS原型/">JS原型</a>
+    </h1>
+  
+
+        
+        <a href="/2017/09/29/JS原型/" class="archive-article-date">
+  	<time datetime="2017-09-29T12:03:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h1><h2 id="1、原型是什么？"><a href="#1、原型是什么？" class="headerlink" title="1、原型是什么？"></a>1、原型是什么？</h2><p>js是一门基于对象的脚本语言，但他没有类的概念。js中的对象是无序属性的集合，其属性可以包含基本值，对象或者函数，类似于键值对的集合。<br>有了对象，按理说得有继承啊，不然对象之间没有任何联系了，也就真的沦为键值对的集合了。</p>
+<p>我们知道，在js中可以使用构造函数来创建一个新对象，像下面这样：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 构造函数无返回值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 通过 new 创建一个新对象</span></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">'Zhoujc'</span>);</span><br></pre></td></tr></table></figure>
+<p><code>new</code>后面跟的不是类，而是构造函数。这里的构造函数可以看作是一种类型，就像面向对象编程语言中的类，但是这样创建的对象除了属性一样外，并没有其他的任何联系，对象之间无法共享属性和方法。每当我们新建一个对象时，都会分配一块新的内存，这是极大的资源浪费。考虑到这点，js的设计者Brendan Eich决定为构造函数设置一个属性。这个属性指向一个对象，所有实例对象需要共享的属性和方法，都放在这个对象里，那些不需要共享的属性和方法，就放在构造函数里。实例对象一旦创建，将自动引用这个对象的属性和方法。也就是说实例对象的属性和方法分成两种，一种本地的，不共享的，另一种是引用的，共享的。这个就对象就是原型（prototype）对象，简称为原型。</p>
+        
+          <a class="article-more-a" href="/2017/09/29/JS原型/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/09/29/JS原型/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-数组扁平化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2616,11 +2683,11 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">css</a>
+                <a href="javascript:void(0)" class="js-tag color1">react</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">react</a>
+                <a href="javascript:void(0)" class="js-tag color4">css</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2632,11 +2699,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
+                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">eggjs</a>
+                <a href="javascript:void(0)" class="js-tag color5">puppeteer</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2652,15 +2719,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vue</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">移动端</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
               </li>
             
             <div class="clearfix"></div>
